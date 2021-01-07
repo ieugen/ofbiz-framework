@@ -25,6 +25,7 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.net.URL;
+import java.net.URLConnection;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -1102,7 +1103,9 @@ public final class UtilProperties implements Serializable {
             super(defaults);
         }
         public ExtendedProperties(URL url, Locale locale) throws IOException, InvalidPropertiesFormatException {
-            try (InputStream in = new BufferedInputStream(url.openStream())) {
+            URLConnection connection = url.openConnection();
+            connection.setUseCaches(false);
+            try (InputStream in = new BufferedInputStream(connection.getInputStream())) {
                 if (url.getFile().endsWith(".xml")) {
                     xmlToProperties(in, locale, this);
                 } else {

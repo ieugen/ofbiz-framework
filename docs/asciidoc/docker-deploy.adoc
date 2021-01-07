@@ -6,27 +6,102 @@ We will build a Docker image and use it to deploy OFBiz with Docker for producti
 * Have a single ofbiz docker image with plugins (default, custom)
 * Configuration is external - provide a configuration for your environment
 * Use an external database and storage volumes
-* Docker image should be immutable
+* Docker image should be immutable / stateless
 * Any code or plugin changes will need a new image deploy
 
+== Building OFBiz docker image
 
 .Build the ofbiz app and docker image from the tar archive
 [source,bash]
 --
   ./gradlew clean build
-  docker build -f Dockerfile -t ofbiz build/
+  docker build -f Dockerfile -t ofbiz
 
 --
 
-.Download a dependency using maven
+.Database drivers are downloaded and installed during Docker build
 [source,bash]
 --
-mvn org.apache.maven.plugins:maven-dependency-plugin:2.4:get \
--DremoteRepositories=https://repo1.maven.org/ \
--Dartifact=org.postgresql:postgresql:42.2.18 \
--Ddest=lib/postgresql-42.2.18.jar
+RUN curl https://repo1.maven.org/maven2/org/postgresql/postgresql/${PG_JAR_VERSION}/postgresql-${PG_JAR_VERSION}.jar \
+    --output /opt/ofbiz/lib/postgresql-${PG_JAR_VERSION}.jar \
+    && curl https://repo1.maven.org/maven2/mysql/mysql-connector-java/${MYSQL_JAR_VERSION}/mysql-connector-java-${MYSQL_JAR_VERSION}.jar \
+    --output /opt/ofbiz/lib/postgresql-${MYSQL_JAR_VERSION}.jar
 --
 
 NOTE: Docker allows building from a git or url https://docs.docker.com/engine/reference/commandline/build/ . This could make image building simpler: we could build from a tar.gz source release, a tar.gz binary release or directly from a git branch.
 
+== Running OFBiz via docker
+
+We are deploying with the following:
+
+* An external database - PostgreSQL
+* External configuration files - mounted as volumes
+
+
+=== Run OFBiz with Apache Derby - Demo
+
+We will create a Docker volume for Derby to store files across container restarts.
+
+.How to start OFBiz using Docker
+[source,bash]
+--
+    # Create the docker volume to persist our data
+    docker volume create ofbiz-demo
+
+    # When you need to, remove the docker volume
+    docker volume rm ofbiz-demo
+
+    # load initial (demo) data in the volume
+    docker run --rm \
+      --name ofbiz-demo \
+      --volume ofbiz-demo:/opt/ofbiz/runtime \
+      ieugen/ofbiz:latest \
+      /opt/ofbiz/bin/ofbiz \
+      --load-data
+
+    # start ofbiz
+    docker run \
+        --name ofbiz-demo \
+        --volume ofbiz-demo:/opt/ofbiz/runtime \
+        -p 8443:8443 \
+        -p 8080:8080 \
+        -p 8009:8009 \
+        ieugen/ofbiz:latest
+--
+
+
+
+=== Run OFBiz with PostgreSQL
+
+=== PostgreSQL preparation
+
+[source,bash]
+--
+    # Connect to a local postgresql via psql
+    sudo -u postgres psql
+    # Inside psql
+    create user ofbiz with password 'ofbiz';
+    create database ofbiz with owner 'ofbiz';
+    create database ofbizolap with owner ofbiz;
+    create database ofbiztenant with owner ofbiz;
+
+    # List databases
+    \l+
+    # Quit
+    \q
+--
+
+NOTE: I'm assuming the database is running on a Debian GNU/Linux system.
+
+
+.How to start OFBiz using Docker
+[source,bash]
+--
+    docker run --detach \
+        --name ofbiz \
+        --restart unless-stopped \
+        --net=host \
+        -v .local-config/entityengine.postgres.xml:/opt/ofbiz/framework/entity/config/entityengine.xml \
+        ieugen/ofbiz:latest
+--
 
