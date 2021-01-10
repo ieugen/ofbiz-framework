@@ -1,17 +1,19 @@
-= Deploy with Docker
+= Deploy OFBiz using containers
 
-We will build a Docker image and use it to deploy OFBiz with Docker for production.
+We will build a Docker image and use it to deploy OFBiz with containers for production.
+
+NOTE: I'm using the generic term `containers` to refer to Docker, Podman, ContainerD or any other compatible version.
 
 .Objectives
-* Have a single ofbiz docker image with plugins (default, custom)
+* Have a single ofbiz container image with plugins (default, custom)
 * Configuration is external - provide a configuration for your environment
 * Use an external database and storage volumes
-* Docker image should be immutable / stateless
-* Any code or plugin changes will need a new image deploy
+* The container image should be immutable / stateless
+* Any code or plugin changes will need a new image - that you can build based on the default
 
-== Building OFBiz docker image
+== Building OFBiz container image
 
-.Build the ofbiz app and docker image from the tar archive
+.Build the ofbiz app and docker/podman image from the tar archive
 [source,bash]
 --
   ./gradlew clean build
@@ -30,7 +32,7 @@ RUN curl https://repo1.maven.org/maven2/org/postgresql/postgresql/${PG_JAR_VERSI
 
 NOTE: Docker allows building from a git or url https://docs.docker.com/engine/reference/commandline/build/ . This could make image building simpler: we could build from a tar.gz source release, a tar.gz binary release or directly from a git branch.
 
-== Running OFBiz via docker
+== Running OFBiz via docker/podman containers
 
 We are deploying with the following:
 
@@ -69,8 +71,6 @@ We will create a Docker volume for Derby to store files across container restart
         ieugen/ofbiz:latest
 --
 
-
-
 === Run OFBiz with PostgreSQL
 
 === PostgreSQL preparation
@@ -92,7 +92,7 @@ We will create a Docker volume for Derby to store files across container restart
 --
 
 NOTE: I'm assuming the database is running on a Debian GNU/Linux system.
-
+You should adapt the commands to your system if that is not the case.
 
 .How to start OFBiz using Docker
 [source,bash]
