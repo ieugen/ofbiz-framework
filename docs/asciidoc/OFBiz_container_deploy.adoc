@@ -58,8 +58,7 @@ We will create a Docker volume for Derby to store files across container restart
       --name ofbiz-demo \
       --volume ofbiz-demo:/opt/ofbiz/runtime \
       ieugen/ofbiz:latest \
-      /opt/ofbiz/bin/ofbiz \
-      --load-data
+      /opt/ofbiz/bin/ofbiz --load-data
 
     # start ofbiz
     docker run \
@@ -72,6 +71,24 @@ We will create a Docker volume for Derby to store files across container restart
 --
 
 === Run OFBiz with PostgreSQL
+
+We are going to deploy OFBiz on a remote server using PostgreSQL database.
+We can deploy the database inside the container or on the host.
+
+We are going to create a directory `/opt/ofbiz` to keep the configuration files and map them in the container from there.
+
+We will copy the configuration there with `scp`.
+
+We will deploy PostgreSql using a container also. We will initialize it using an initialization script that will create the ofbiz user and database.
+
+We are going to bind both PostgreSQL and OFBiz container to the host networking.
+This might not be ideal, but it will work for us.
+
+
+[source,shell]
+--
+  mkdir -p /opt/ofbiz
+--
 
 === PostgreSQL preparation
 
@@ -97,11 +114,36 @@ You should adapt the commands to your system if that is not the case.
 .How to start OFBiz using Docker
 [source,bash]
 --
+
+    docker volume create ofbiz-netdava-db
+    docker volume create ofbiz-netdava
+
     docker run --detach \
-        --name ofbiz \
+        --name ofbiz-postgres \
         --restart unless-stopped \
         --net=host \
-        -v .local-config/entityengine.postgres.xml:/opt/ofbiz/framework/entity/config/entityengine.xml \
-        ieugen/ofbiz:latest
+        --volume ofbiz-netdava-db:/var/lib/postgresql/data \
+        --volume /opt/ofbiz/initdb:/docker-entrypoint-initdb.d \
+        --env POSTGRES_PASSWORD=ofbiz \
+        postgres:13
+
+
+    # Data loading
+    docker run --rm \
+        --name ofbiz-netdava \
+        --net=host \
+        --volume /opt/ofbiz/entityengine.postgres.xml:/opt/ofbiz/config/entityengine.xml:ro \
+        --volume /opt/ofbiz/security.properties:/opt/ofbiz/config/security.properties:ro \
+        --volume ofbiz-netdava:/opt/ofbiz/runtime \
+        ieugen/ofbiz:trunk-8 --load-data
+
+    docker run --detach \
+        --name ofbiz-netdava \
+        --restart unless-stopped \
+        --net=host \
+        --volume /opt/ofbiz/entityengine.postgres.xml:/opt/ofbiz/config/entityengine.xml:ro \
+        --volume /opt/ofbiz/security.properties:/opt/ofbiz/config/security.properties:ro \
+        --volume ofbiz-netdava:/opt/ofbiz/runtime \
+        ieugen/ofbiz:trunk-8
 --
 
