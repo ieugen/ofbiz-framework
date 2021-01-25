@@ -1,0 +1,57 @@
+= Run OFBiz with PostgresQL
+
+Documentation: https://github.com/ieugen/ofbiz-framework/blob/gh-action/docs/asciidoc/OFBiz_container_deploy.adoc
+
+[source,shell]
+--
+# Data loading
+    docker run --rm \
+        --name ofbiz-netdava \
+        --net=host \
+        --volume $PWD/local-config/entityengine.postgres.xml:/opt/ofbiz/config/entityengine.xml:ro \
+        --volume $PWD/local-config/runtime:/opt/ofbiz/runtime \
+        ieugen/ofbiz:trunk-8 /opt/ofbiz/bin/ofbiz --load-data readers=seed,seed-initial,ext file=/opt/ofbiz/initial.xml
+
+    docker run --detach \
+        --name ofbiz-netdava \
+        --restart unless-stopped \
+        --net=host \
+        --volume $PWD/local-config/entityengine.postgres.xml:/opt/ofbiz/config/entityengine.xml:ro \
+        --volume $PWD/local-config/runtime:/opt/ofbiz/runtime \
+        ieugen/ofbiz:trunk-8
+--
+
+== Run OFBiz with Derby
+
+[source,shell]
+--
+    sudo rm -rf local-config/runtime/catalina/
+    sudo rm -rf local-config/runtime/logs/
+    sudo rm -rf local-config/runtime/data/
+
+    docker logs -f ofbiz-derby
+
+    # Data loading
+    docker run --rm \
+        --name ofbiz-derby \
+        --net=host \
+        --volume $PWD/local-config/runtime:/opt/ofbiz/runtime \
+        --volume $PWD/local-config/import-data:/opt/ofbiz/runtime/import-data \
+        ieugen/ofbiz:trunk-8 /opt/ofbiz/bin/ofbiz --load-data readers=seed,seed-initial,ext \
+        --load-data file=/opt/ofbiz/runtime/import-data/initial.xml
+    
+    docker run --rm \
+        --name ofbiz-derby \
+        --net=host \
+        --volume $PWD/local-config/runtime:/opt/ofbiz/runtime \
+        --volume $PWD/local-config/import-data:/opt/ofbiz/runtime/import-data \
+        ieugen/ofbiz:trunk-8 /opt/ofbiz/bin/ofbiz --load-data file=/opt/ofbiz/runtime/import-data/initial.xml
+
+    docker run --detach \
+        --name ofbiz-derby \
+        --restart unless-stopped \
+        --net=host \
+        --volume $PWD/local-config/runtime:/opt/ofbiz/runtime \
+        --volume $PWD/local-config/import-data:/opt/ofbiz/runtime/import-data \
+        ieugen/ofbiz:trunk-8
+--

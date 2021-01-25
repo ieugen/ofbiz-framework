@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-engine-xml>
+<Party partyId="Netdava" statusId="PARTY_ENABLED" partyTypeId="PARTY_GROUP"/>
+<Party partyId="admin" statusId="PARTY_ENABLED" partyTypeId="PERSON"/>
+<Party partyId="EugenStan" statusId="PARTY_ENABLED" partyTypeId="PERSON"/>
+<Party partyId="AndreiStan" statusId="PARTY_ENABLED" partyTypeId="PERSON"/>
+
+<UserLogin userLoginId="admin" partyId="admin" currentPassword="{SHA}47b56994cbc2b6d10aa1be30f70165adb305a41a"/>
+</entity-engine-xml>
