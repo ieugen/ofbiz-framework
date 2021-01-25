@@ -1,9 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <entity-engine-xml>
-<Party partyId="Netdava" statusId="PARTY_ENABLED" partyTypeId="PARTY_GROUP"/>
-<Party partyId="admin" statusId="PARTY_ENABLED" partyTypeId="PERSON"/>
-<Party partyId="EugenStan" statusId="PARTY_ENABLED" partyTypeId="PERSON"/>
-<Party partyId="AndreiStan" statusId="PARTY_ENABLED" partyTypeId="PERSON"/>
 
-<UserLogin userLoginId="admin" partyId="admin" currentPassword="{SHA}47b56994cbc2b6d10aa1be30f70165adb305a41a"/>
+<SecurityPermission permissionId="access" description="Base ACCESS permission"/>
+<SecurityPermission permissionId="create" description="Base CREATE permission"/>
+<SecurityPermission permissionId="read" description="Base READ permission"/>
+<SecurityPermission permissionId="update" description="Base UPDATE permission"/>
+<SecurityPermission permissionId="delete" description="Base DELETE permission"/>
+<SecurityPermission permissionId="OFBTOOLS_VIEW" description="Permission to access the Stock OFBiz Manager Applications."/>
+<SecurityPermission description="Permission to access the Stock OFBiz Manager Applications." permissionId="OFBTOOLS_VIEW"/>
+
+<SecurityGroup groupId="SUPER" description="Practic toate permisiunile, practic B0SS_MODE_ON" groupName="Super"/>
+
+<SecurityGroupPermission fromDate="2001-05-13 12:00:00.0" groupId="SUPER" permissionId="OFBTOOLS_VIEW"/>
+
+<Party partyId="Andrew" statusId="PARTY_ENABLED" partyTypeId="PERSON"/>
+<UserLogin userLoginId="andrew" partyId="Andrew" enabled="Y" currentPassword="{SHA}47b56994cbc2b6d10aa1be30f70165adb305a41a"/>
+<UserLoginSecurityGroup groupId="SUPER" userLoginId="andrew" fromDate="2001-01-01 12:00:00.0"/>
+
+<SecurityGroupPermission fromDate="2001-05-13 12:00:00.0" groupId="SUPER" permissionId="access"/>
+<SecurityGroupPermission fromDate="2001-05-13 12:00:00.0" groupId="SUPER" permissionId="create"/>
+<SecurityGroupPermission fromDate="2001-05-13 12:00:00.0" groupId="SUPER" permissionId="read"/>
+<SecurityGroupPermission fromDate="2001-05-13 12:00:00.0" groupId="SUPER" permissionId="update"/>
+<SecurityGroupPermission fromDate="2001-05-13 12:00:00.0" groupId="SUPER" permissionId="delete"/>
+
+
+
+
+
+
+
 </entity-engine-xml>
