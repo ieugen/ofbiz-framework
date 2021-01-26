@@ -23,10 +23,23 @@
 <SecurityGroupPermission fromDate="2001-05-13 12:00:00.0" groupId="SUPER" permissionId="update"/>
 <SecurityGroupPermission fromDate="2001-05-13 12:00:00.0" groupId="SUPER" permissionId="delete"/>
 
-
-
-
-
-
+<Party partyId="RobomarketingSRL" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>
+<Party partyId="ITPerspectivesSRL" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>
+<Party partyId="VentivoCapitalSRL" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>
+<Party partyId="GPISL" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>
+<Party partyId="OneSoftwareSRL" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>
+<Party partyId="HappySteamCrew" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>
+<Party partyId="GreatPeopleInside" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>
+<Party partyId="VentivoItSolutions" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>
+<Party partyId="RossmayInternational" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>
+<PartyRole partyId="RobomarketingSRL" roleTypeId="CUSTOMER"/>
+<PartyRole partyId="ITPerspectivesSRL" roleTypeId="CUSTOMER"/>
+<PartyRole partyId="VentivoCapitalSRL" roleTypeId="CUSTOMER"/>
+<PartyRole partyId="GPISL" roleTypeId="CUSTOMER"/>
+<PartyRole partyId="OneSoftwareSRL" roleTypeId="CUSTOMER"/>
+<PartyRole partyId="HappySteamCrew" roleTypeId="CUSTOMER"/>
+<PartyRole partyId="GreatPeopleInside" roleTypeId="CUSTOMER"/>
+<PartyRole partyId="VentivoItSolutions" roleTypeId="CUSTOMER"/>
+<PartyRole partyId="RossmayInternational" roleTypeId="CUSTOMER"/>
 
 </entity-engine-xml>
