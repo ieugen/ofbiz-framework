@@ -13,6 +13,33 @@
 
 <SecurityGroupPermission fromDate="2001-05-13 12:00:00.0" groupId="SUPER" permissionId="OFBTOOLS_VIEW"/>
 
+<Party partyId="Netdava" statusId="PARTY_ENABLED" partyTypeId="PARTY_GROUP"/>
+
+<!-- company email -->
+<ContactMech contactMechId="companyEmail" contactMechTypeId="EMAIL_ADDRESS" infoString="ieugen@netdava.com"/>
+<ContactMechType contactMechTypeId="EMAIL_ADDRESS" description="E-mail Address" hasTable="N"/>
+<PartyContactMech partyId="Netdava" contactMechId="companyEmail" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
+<PartyContactMechPurpose partyId="Netdava" contactMechId="companyEmail" contactMechPurposeTypeId="PRIMARY_EMAIL" fromDate="2021-01-01 00:00:00.0"/>
+
+<!-- company web-address -->
+<ContactMech contactMechId="companyWebsite" contactMechTypeId="WEB_ADDRESS" infoString="https://netdava.com"/>
+<ContactMechType contactMechTypeId="WEB_ADDRESS" description="Website Address" hasTable="N"/>
+<PartyContactMech partyId="Netdava" contactMechId="companyWebsite" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
+<PartyContactMechPurpose partyId="Netdava" contactMechId="companyWebsite" contactMechPurposeTypeId="PRIMARY_WEB_URL" fromDate="2021-01-01 00:00:00.0"/>
+
+<!-- company phone -->
+<ContactMech contactMechId="phoneNo" contactMechTypeId="TELECOM_NUMBER" infoString="(+4)0720898747"/>
+<ContactMechType contactMechTypeId="TELECOM_NUMBER" description="Telefon" hasTable="N"/>
+<TelecomNumber contactMechId="phoneNo" countryCode="+40" contactNumber="720898747" askForName="Eugen Stan"/>
+<PartyContactMech partyId="Netdava" contactMechId="phoneNo" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
+<PartyContactMechPurpose partyId="Netdava" contactMechId="phoneNo" contactMechPurposeTypeId="PHONE_MOBILE" fromDate="2021-01-01 00:00:00.0"/>
+
+<!-- postal address -->
+<ContactMech contactMechId="postalAddress" contactMechTypeId="POSTAL_ADDRESS"/>
+<PostalAddress contactMechId="postalAddress" toName="Netdava International S.R.L." address1="Aleea Arnăuți nr. 5" city="Ploiești" postalCode="100285" countryGeoId="ROU"/>
+<PartyContactMech partyId="Netdava" contactMechId="postalAddress" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
+<PartyContactMechPurpose partyId="Netdava" contactMechId="postalAddress" contactMechPurposeTypeId="PRIMARY_LOCATION" fromDate="2021-01-01 00:00:00.0"/>
+
 <Party partyId="Andrew" statusId="PARTY_ENABLED" partyTypeId="PERSON"/>
 <UserLogin userLoginId="andrew" partyId="Andrew" enabled="Y" currentPassword="{SHA}47b56994cbc2b6d10aa1be30f70165adb305a41a"/>
 <UserLoginSecurityGroup groupId="SUPER" userLoginId="andrew" fromDate="2001-01-01 12:00:00.0"/>
@@ -23,23 +50,159 @@
 <SecurityGroupPermission fromDate="2001-05-13 12:00:00.0" groupId="SUPER" permissionId="update"/>
 <SecurityGroupPermission fromDate="2001-05-13 12:00:00.0" groupId="SUPER" permissionId="delete"/>
 
-<Party partyId="RobomarketingSRL" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>
-<Party partyId="ITPerspectivesSRL" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>
-<Party partyId="VentivoCapitalSRL" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>
-<Party partyId="GPISL" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>
-<Party partyId="OneSoftwareSRL" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>
-<Party partyId="HappySteamCrew" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>
-<Party partyId="GreatPeopleInside" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>
-<Party partyId="VentivoItSolutions" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>
-<Party partyId="RossmayInternational" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>
-<PartyRole partyId="RobomarketingSRL" roleTypeId="CUSTOMER"/>
-<PartyRole partyId="ITPerspectivesSRL" roleTypeId="CUSTOMER"/>
-<PartyRole partyId="VentivoCapitalSRL" roleTypeId="CUSTOMER"/>
-<PartyRole partyId="GPISL" roleTypeId="CUSTOMER"/>
-<PartyRole partyId="OneSoftwareSRL" roleTypeId="CUSTOMER"/>
-<PartyRole partyId="HappySteamCrew" roleTypeId="CUSTOMER"/>
-<PartyRole partyId="GreatPeopleInside" roleTypeId="CUSTOMER"/>
-<PartyRole partyId="VentivoItSolutions" roleTypeId="CUSTOMER"/>
-<PartyRole partyId="RossmayInternational" roleTypeId="CUSTOMER"/>
+<Party partyId="Robomarketing" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>
+  <Party partyId="ITPerspectives" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>
+  <Party partyId="VentivoCapital" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>
+  <Party partyId="GpiSL" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>
+  <Party partyId="OneSoftware" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>
+  <Party partyId="HappySteamCrew" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>
+  <Party partyId="GpiPteLtd" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>
+  <Party partyId="VentivoItSolutions" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>
+  <Party partyId="RossmayInt" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>
+
+<!-- <PartyRole partyId="Robomarketing" roleType="CUSTOMER"/> -->
+  <!-- <PartyRole partyId="ITPerspectives" roleType="CUSTOMER"/>
+  <PartyRole partyId="VentivoCapital" roleType="CUSTOMER"/>
+  <PartyRole partyId="GpiSL" roleType="CUSTOMER"/>
+  <PartyRole partyId="OneSoftware" roleType="CUSTOMER"/>
+  <PartyRole partyId="HappySteamCrew" roleType="CUSTOMER"/>
+  <PartyRole partyId="GpiPteLtd" roleType="CUSTOMER"/>
+  <PartyRole partyId="VentivoItSolutions" roleType="CUSTOMER"/>
+  <PartyRole partyId="RossmayInt" roleType="CUSTOMER"/> -->
+  <ContactMech contactMechId="PA505195" contactMechTypeId="POSTAL_ADDRESS"/>
+  <PostalAddress contactMechId="PA505195" toName="Robomarketing S.R.L." address1="Str. Sloboziei, 16, -" address2="" city="Călărași" postalCode="910014" iso="ROU"/>
+  <PartyContactMech partyId="Robomarketing" contactMechId="PA505195" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
+  <PartyContactMechPurpose partyId="Robomarketing" contactMechId="PA505195" contactMechPurposeTypeId="PRIMARY_LOCATION" fromDate="2021-01-01 00:00:00.0"/>
+  <ContactMech contactMechId="PA491820" contactMechTypeId="POSTAL_ADDRESS"/>
+  <PostalAddress contactMechId="PA491820" toName="I.T. Perspectives S.R.L." address1="Str. G-ral Ion Dragalina, 1, -" address2="" city="Sibiu" postalCode="550076" iso="ROU"/>
+  <PartyContactMech partyId="ITPerspectives" contactMechId="PA491820" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
+  <PartyContactMechPurpose partyId="ITPerspectives" contactMechId="PA491820" contactMechPurposeTypeId="PRIMARY_LOCATION" fromDate="2021-01-01 00:00:00.0"/>
+  <ContactMech contactMechId="PA325933" contactMechTypeId="POSTAL_ADDRESS"/>
+  <PostalAddress contactMechId="PA325933" toName="Ventivo Capital S.R.L." address1="Șos. Pantelimon, 126, București" address2="" city="Sect 2" postalCode="21643" iso="ROU"/>
+  <PartyContactMech partyId="VentivoCapital" contactMechId="PA325933" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
+  <PartyContactMechPurpose partyId="VentivoCapital" contactMechId="PA325933" contactMechPurposeTypeId="PRIMARY_LOCATION" fromDate="2021-01-01 00:00:00.0"/>
+  <ContactMech contactMechId="PA303406" contactMechTypeId="POSTAL_ADDRESS"/>
+  <PostalAddress contactMechId="PA303406" toName="Great People Inside S.L" address1="Avenida de Europa 14. " address2="28108-Alcobendas" city="Madrid" postalCode="28108" iso="ESP"/>
+  <PartyContactMech partyId="GpiSL" contactMechId="PA303406" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
+  <PartyContactMechPurpose partyId="GpiSL" contactMechId="PA303406" contactMechPurposeTypeId="PRIMARY_LOCATION" fromDate="2021-01-01 00:00:00.0"/>
+  <ContactMech contactMechId="PA440108" contactMechTypeId="POSTAL_ADDRESS"/>
+  <PostalAddress contactMechId="PA440108" toName="One Software S.R.L." address1="Str. Spitalului, 7, Locuin?a C1" address2="" city="Ploiești" postalCode="100144" iso="ROU"/>
+  <PartyContactMech partyId="OneSoftware" contactMechId="PA440108" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
+  <PartyContactMechPurpose partyId="OneSoftware" contactMechId="PA440108" contactMechPurposeTypeId="PRIMARY_LOCATION" fromDate="2021-01-01 00:00:00.0"/>
+  <ContactMech contactMechId="PA447781" contactMechTypeId="POSTAL_ADDRESS"/>
+  <PostalAddress contactMechId="PA447781" toName="Happy Steam Crew S.R.L." address1="Str. Mihai Viteazul, 430, -" address2="" city="Valea Nicovani" postalCode="107632" iso="ROU"/>
+  <PartyContactMech partyId="HappySteamCrew" contactMechId="PA447781" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
+  <PartyContactMechPurpose partyId="HappySteamCrew" contactMechId="PA447781" contactMechPurposeTypeId="PRIMARY_LOCATION" fromDate="2021-01-01 00:00:00.0"/>
+  <ContactMech contactMechId="PA342940" contactMechTypeId="POSTAL_ADDRESS"/>
+  <PostalAddress contactMechId="PA342940" toName="Great People Inside Pte Ltd" address1="160 Robinson Road" address2="#14-04 Singapore Business Federation  Centre" city="Singapore" postalCode="068914" iso="SGP"/>
+  <PartyContactMech partyId="GpiPteLtd" contactMechId="PA342940" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
+  <PartyContactMechPurpose partyId="GpiPteLtd" contactMechId="PA342940" contactMechPurposeTypeId="PRIMARY_LOCATION" fromDate="2021-01-01 00:00:00.0"/>
+  <ContactMech contactMechId="PA548513" contactMechTypeId="POSTAL_ADDRESS"/>
+  <PostalAddress contactMechId="PA548513" toName="Ventivo It Solutions S.R.L." address1="Str. Mihai Viteazul, 24-26, Ap:13, Mansardă 1 + Mansardă 2" address2="" city="Brașov" postalCode="" iso="ROU"/>
+  <PartyContactMech partyId="VentivoItSolutions" contactMechId="PA548513" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
+  <PartyContactMechPurpose partyId="VentivoItSolutions" contactMechId="PA548513" contactMechPurposeTypeId="PRIMARY_LOCATION" fromDate="2021-01-01 00:00:00.0"/>
+  <ContactMech contactMechId="PA213863" contactMechTypeId="POSTAL_ADDRESS"/>
+  <PostalAddress contactMechId="PA213863" toName="Rossmay International S.R.L." address1="Str. Ion Câmpineanu, 11, București" address2="" city="Sect 1" postalCode="10031" iso="ROU"/>
+  <PartyContactMech partyId="RossmayInt" contactMechId="PA213863" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
+  <PartyContactMechPurpose partyId="RossmayInt" contactMechId="PA213863" contactMechPurposeTypeId="PRIMARY_LOCATION" fromDate="2021-01-01 00:00:00.0"/>
+  <ContactMech contactMechId="CE505195" contactMechTypeId="EMAIL_ADDRESS" infoString="office@robomarketing.ro"/>
+  <ContactMechType contactMechTypeId="EMAIL_ADDRESS" description="Email Address"/>
+  <PartyContactMech partyId="Robomarketing" contactMechId="CE505195" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
+  <PartyContactMechPurpose partyId="Robomarketing" contactMechId="CE505195" contactMechPurposeTypeId="PRIMARY_EMAIL" fromDate="2021-01-01 00:00:00.0"/>
+  <ContactMech contactMechId="CE491820" contactMechTypeId="EMAIL_ADDRESS" infoString="radu.secosan@itperspectives.ro"/>
+  <ContactMechType contactMechTypeId="EMAIL_ADDRESS" description="Email Address"/>
+  <PartyContactMech partyId="ITPerspectives" contactMechId="CE491820" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
+  <PartyContactMechPurpose partyId="ITPerspectives" contactMechId="CE491820" contactMechPurposeTypeId="PRIMARY_EMAIL" fromDate="2021-01-01 00:00:00.0"/>
+  <ContactMech contactMechId="CE325933" contactMechTypeId="EMAIL_ADDRESS" infoString="office@ventivogroup.com"/>
+  <ContactMechType contactMechTypeId="EMAIL_ADDRESS" description="Email Address"/>
+  <PartyContactMech partyId="VentivoCapital" contactMechId="CE325933" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
+  <PartyContactMechPurpose partyId="VentivoCapital" contactMechId="CE325933" contactMechPurposeTypeId="PRIMARY_EMAIL" fromDate="2021-01-01 00:00:00.0"/>
+  <ContactMech contactMechId="CE303406" contactMechTypeId="EMAIL_ADDRESS" infoString="pablo.fernandez@greatpeopleinside.es"/>
+  <ContactMechType contactMechTypeId="EMAIL_ADDRESS" description="Email Address"/>
+  <PartyContactMech partyId="GpiSL" contactMechId="CE303406" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
+  <PartyContactMechPurpose partyId="GpiSL" contactMechId="CE303406" contactMechPurposeTypeId="PRIMARY_EMAIL" fromDate="2021-01-01 00:00:00.0"/>
+  <ContactMech contactMechId="CE440108" contactMechTypeId="EMAIL_ADDRESS" infoString="vlad@onesoftware.ro"/>
+  <ContactMechType contactMechTypeId="EMAIL_ADDRESS" description="Email Address"/>
+  <PartyContactMech partyId="OneSoftware" contactMechId="CE440108" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
+  <PartyContactMechPurpose partyId="OneSoftware" contactMechId="CE440108" contactMechPurposeTypeId="PRIMARY_EMAIL" fromDate="2021-01-01 00:00:00.0"/>
+  <ContactMech contactMechId="CE447781" contactMechTypeId="EMAIL_ADDRESS" infoString="office@calcatoriamobila.ro"/>
+  <ContactMechType contactMechTypeId="EMAIL_ADDRESS" description="Email Address"/>
+  <PartyContactMech partyId="HappySteamCrew" contactMechId="CE447781" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
+  <PartyContactMechPurpose partyId="HappySteamCrew" contactMechId="CE447781" contactMechPurposeTypeId="PRIMARY_EMAIL" fromDate="2021-01-01 00:00:00.0"/>
+  <ContactMech contactMechId="CE342940" contactMechTypeId="EMAIL_ADDRESS" infoString="contact@greatpeopleinside.com"/>
+  <ContactMechType contactMechTypeId="EMAIL_ADDRESS" description="Email Address"/>
+  <PartyContactMech partyId="GpiPteLtd" contactMechId="CE342940" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
+  <PartyContactMechPurpose partyId="GpiPteLtd" contactMechId="CE342940" contactMechPurposeTypeId="PRIMARY_EMAIL" fromDate="2021-01-01 00:00:00.0"/>
+  <ContactMech contactMechId="CE548513" contactMechTypeId="EMAIL_ADDRESS" infoString="ruxandra@ventivogroup.com"/>
+  <ContactMechType contactMechTypeId="EMAIL_ADDRESS" description="Email Address"/>
+  <PartyContactMech partyId="VentivoItSolutions" contactMechId="CE548513" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
+  <PartyContactMechPurpose partyId="VentivoItSolutions" contactMechId="CE548513" contactMechPurposeTypeId="PRIMARY_EMAIL" fromDate="2021-01-01 00:00:00.0"/>
+  <ContactMech contactMechId="CE213863" contactMechTypeId="EMAIL_ADDRESS" infoString="printquickdesign@yahoo.com"/>
+  <ContactMechType contactMechTypeId="EMAIL_ADDRESS" description="Email Address"/>
+  <PartyContactMech partyId="RossmayInt" contactMechId="CE213863" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
+  <PartyContactMechPurpose partyId="RossmayInt" contactMechId="CE213863" contactMechPurposeTypeId="PRIMARY_EMAIL" fromDate="2021-01-01 00:00:00.0"/>
+  <ContactMech contactMechId="WEB505195" contactMechTypeId="WEB_ADDRESS" infoString="https://www.robomarketing.ro"/>
+  <ContactMechType contactMechTypeId="WEB_ADDRESS" description="Website Address"/>
+  <PartyContactMech partyId="Robomarketing" contactMechId="WEB505195" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
+  <PartyContactMechPurpose partyId="Robomarketing" contactMechId="WEB505195" contactMechPurposeTypeId="PRIMARY_WEB_URL" fromDate="2021-01-01 00:00:00.0"/>
+  <ContactMech contactMechId="WEB491820" contactMechTypeId="WEB_ADDRESS" infoString="https://www.itperspectives.ro/"/>
+  <ContactMechType contactMechTypeId="WEB_ADDRESS" description="Website Address"/>
+  <PartyContactMech partyId="ITPerspectives" contactMechId="WEB491820" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
+  <PartyContactMechPurpose partyId="ITPerspectives" contactMechId="WEB491820" contactMechPurposeTypeId="PRIMARY_WEB_URL" fromDate="2021-01-01 00:00:00.0"/>
+  <ContactMech contactMechId="WEB325933" contactMechTypeId="WEB_ADDRESS" infoString="https://ventivogroup.com/"/>
+  <ContactMechType contactMechTypeId="WEB_ADDRESS" description="Website Address"/>
+  <PartyContactMech partyId="VentivoCapital" contactMechId="WEB325933" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
+  <PartyContactMechPurpose partyId="VentivoCapital" contactMechId="WEB325933" contactMechPurposeTypeId="PRIMARY_WEB_URL" fromDate="2021-01-01 00:00:00.0"/>
+  <ContactMech contactMechId="WEB440108" contactMechTypeId="WEB_ADDRESS" infoString="onesoftware.ro"/>
+  <ContactMechType contactMechTypeId="WEB_ADDRESS" description="Website Address"/>
+  <PartyContactMech partyId="OneSoftware" contactMechId="WEB440108" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
+  <PartyContactMechPurpose partyId="OneSoftware" contactMechId="WEB440108" contactMechPurposeTypeId="PRIMARY_WEB_URL" fromDate="2021-01-01 00:00:00.0"/>
+  <ContactMech contactMechId="WEB447781" contactMechTypeId="WEB_ADDRESS" infoString="https://calcatoriamobila.ro/"/>
+  <ContactMechType contactMechTypeId="WEB_ADDRESS" description="Website Address"/>
+  <PartyContactMech partyId="HappySteamCrew" contactMechId="WEB447781" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
+  <PartyContactMechPurpose partyId="HappySteamCrew" contactMechId="WEB447781" contactMechPurposeTypeId="PRIMARY_WEB_URL" fromDate="2021-01-01 00:00:00.0"/>
+  <ContactMech contactMechId="WEB342940" contactMechTypeId="WEB_ADDRESS" infoString="greatpeopleinside.com"/>
+  <ContactMechType contactMechTypeId="WEB_ADDRESS" description="Website Address"/>
+  <PartyContactMech partyId="GpiPteLtd" contactMechId="WEB342940" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
+  <PartyContactMechPurpose partyId="GpiPteLtd" contactMechId="WEB342940" contactMechPurposeTypeId="PRIMARY_WEB_URL" fromDate="2021-01-01 00:00:00.0"/>
+  <ContactMech contactMechId="WEB548513" contactMechTypeId="WEB_ADDRESS" infoString="https://ventivogroup.com"/>
+  <ContactMechType contactMechTypeId="WEB_ADDRESS" description="Website Address"/>
+  <PartyContactMech partyId="VentivoItSolutions" contactMechId="WEB548513" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
+  <PartyContactMechPurpose partyId="VentivoItSolutions" contactMechId="WEB548513" contactMechPurposeTypeId="PRIMARY_WEB_URL" fromDate="2021-01-01 00:00:00.0"/>
+  <ContactMech contactMechId="PHONE505195" contactMechTypeId="TELECOM_NUMBER" infoString="0775341146"/>
+  <ContactMechType contactMechTypeId="TELECOM_NUMBER" description="Telephone Number"/>
+  <TelecomNumber contactMechId="PHONE505195" countryCode="40" contactNumber="0775341146"/>
+  <PartyContactMech partyId="Robomarketing" contactMechId="PHONE505195" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
+  <PartyContactMechPurpose partyId="Robomarketing" contactMechId="PHONE505195" contactMechPurposeTypeId="PHONE_MOBILE" fromDate="2021-01-01 00:00:00.0"/>
+  <ContactMech contactMechId="PHONE491820" contactMechTypeId="TELECOM_NUMBER" infoString="0369401424"/>
+  <ContactMechType contactMechTypeId="TELECOM_NUMBER" description="Telephone Number"/>
+  <TelecomNumber contactMechId="PHONE491820" countryCode="40" contactNumber="0369401424"/>
+  <PartyContactMech partyId="ITPerspectives" contactMechId="PHONE491820" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
+  <PartyContactMechPurpose partyId="ITPerspectives" contactMechId="PHONE491820" contactMechPurposeTypeId="PHONE_MOBILE" fromDate="2021-01-01 00:00:00.0"/>
+  <ContactMech contactMechId="PHONE303406" contactMechTypeId="TELECOM_NUMBER" infoString="34 911890563"/>
+  <ContactMechType contactMechTypeId="TELECOM_NUMBER" description="Telephone Number"/>
+  <TelecomNumber contactMechId="PHONE303406" countryCode="34" contactNumber="34 911890563"/>
+  <PartyContactMech partyId="GpiSL" contactMechId="PHONE303406" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
+  <PartyContactMechPurpose partyId="GpiSL" contactMechId="PHONE303406" contactMechPurposeTypeId="PHONE_MOBILE" fromDate="2021-01-01 00:00:00.0"/>
+  <ContactMech contactMechId="PHONE440108" contactMechTypeId="TELECOM_NUMBER" infoString="0721218906"/>
+  <ContactMechType contactMechTypeId="TELECOM_NUMBER" description="Telephone Number"/>
+  <TelecomNumber contactMechId="PHONE440108" countryCode="40" contactNumber="0721218906"/>
+  <PartyContactMech partyId="OneSoftware" contactMechId="PHONE440108" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
+  <PartyContactMechPurpose partyId="OneSoftware" contactMechId="PHONE440108" contactMechPurposeTypeId="PHONE_MOBILE" fromDate="2021-01-01 00:00:00.0"/>
+  <ContactMech contactMechId="PHONE447781" contactMechTypeId="TELECOM_NUMBER" infoString="0720062202"/>
+  <ContactMechType contactMechTypeId="TELECOM_NUMBER" description="Telephone Number"/>
+  <TelecomNumber contactMechId="PHONE447781" countryCode="40" contactNumber="0720062202"/>
+  <PartyContactMech partyId="HappySteamCrew" contactMechId="PHONE447781" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
+  <PartyContactMechPurpose partyId="HappySteamCrew" contactMechId="PHONE447781" contactMechPurposeTypeId="PHONE_MOBILE" fromDate="2021-01-01 00:00:00.0"/>
+  <ContactMech contactMechId="PHONE548513" contactMechTypeId="TELECOM_NUMBER" infoString="0731071751"/>
+  <ContactMechType contactMechTypeId="TELECOM_NUMBER" description="Telephone Number"/>
+  <TelecomNumber contactMechId="PHONE548513" countryCode="40" contactNumber="0731071751"/>
+  <PartyContactMech partyId="VentivoItSolutions" contactMechId="PHONE548513" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
+  <PartyContactMechPurpose partyId="VentivoItSolutions" contactMechId="PHONE548513" contactMechPurposeTypeId="PHONE_MOBILE" fromDate="2021-01-01 00:00:00.0"/>
+  <ContactMech contactMechId="PHONE213863" contactMechTypeId="TELECOM_NUMBER" infoString="0773886454"/>
+  <ContactMechType contactMechTypeId="TELECOM_NUMBER" description="Telephone Number"/>
+  <TelecomNumber contactMechId="PHONE213863" countryCode="40" contactNumber="0773886454"/>
+  <PartyContactMech partyId="RossmayInt" contactMechId="PHONE213863" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
+  <PartyContactMechPurpose partyId="RossmayInt" contactMechId="PHONE213863" contactMechPurposeTypeId="PHONE_MOBILE" fromDate="2021-01-01 00:00:00.0"/>
 
 </entity-engine-xml>
