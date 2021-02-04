@@ -9,10 +9,17 @@ ARG MYSQL_JAR_VERSION=8.0.22
 
 FROM gradle:6.5.1-jdk8 as builder
 
-COPY . ofbiz
+WORKDIR /home/gradle/ofbiz
+RUN mkdir framework themes applications plugins
+COPY build.gradle settings.gradle gradle.properties common.gradle .
+COPY framework/base/config/component-load.xml framework/base/config/component-load.xml
 
-RUN cd ofbiz \
-  && gradle clean build \
+RUN find .
+RUN gradle --no-daemon --info --refresh-dependencies dependencies
+
+COPY . .
+
+RUN gradle --no-daemon --info clean build \
   && pwd
 
 # Docker stage - copy and unpack the application
