@@ -36,14 +36,14 @@ import java.util.regex.Pattern;
  * only authorized class can be read from it.
  */
 public final class SafeObjectInputStream extends ObjectInputStream {
-    private static final String[] DEFAULT_WHITELIST_PATTERN = {
+    private static final String[] DEFAULT_ALLOWLIST_PATTERN = {
             "byte\\[\\]", "foo", "SerializationInjector",
             "\\[Z", "\\[B", "\\[S", "\\[I", "\\[J", "\\[F", "\\[D", "\\[C",
             "java..*", "sun.util.calendar..*", "org.apache.ofbiz..*",
             "org.codehaus.groovy.runtime.GStringImpl", "groovy.lang.GString"};
 
     /** The regular expression used to match serialized types. */
-    private final Pattern whitelistPattern;
+    private final Pattern allowlistPattern;
 
     /**
      * Instantiates a safe object input stream.
@@ -53,8 +53,8 @@ public final class SafeObjectInputStream extends ObjectInputStream {
     public SafeObjectInputStream(InputStream in) throws IOException {
         super(in);
         String safeObjectsProp = getPropertyValue("SafeObjectInputStream", "ListOfSafeObjectsForInputStream", "");
-        String[] whitelist = safeObjectsProp.isEmpty() ? DEFAULT_WHITELIST_PATTERN : safeObjectsProp.split(",");
-        whitelistPattern = Arrays.stream(whitelist)
+        String[] allowlist = safeObjectsProp.isEmpty() ? DEFAULT_ALLOWLIST_PATTERN : safeObjectsProp.split(",");
+        allowlistPattern = Arrays.stream(allowlist)
                 .map(String::trim)
                 .filter(str -> !str.isEmpty())
                 .collect(collectingAndThen(joining("|", "(", ")"), Pattern::compile));
@@ -62,9 +62,18 @@ public final class SafeObjectInputStream extends ObjectInputStream {
 
     @Override
     protected Class<?> resolveClass(ObjectStreamClass classDesc) throws IOException, ClassNotFoundException {
-        if (!whitelistPattern.matcher(classDesc.getName()).find()) {
+        String className = classDesc.getName();
+        // DenyList exploits; eg: don't allow RMI here
+        if (className.contains("java.rmi.server")) {
+            Debug.logWarning("***Incompatible class***: "
+                    + classDesc.getName()
+                    + ". java.rmi.server classes are not allowed for security reason",
+                    "SafeObjectInputStream");
+            return null;
+        }
+        if (!allowlistPattern.matcher(className).find()) {
             // DiskFileItem, FileItemHeadersImpl are not serializable.
-            if (classDesc.getName().contains("org.apache.commons.fileupload")) {
+            if (className.contains("org.apache.commons.fileupload")) {
                 return null;
             }
             Debug.logWarning("***Incompatible class***: "

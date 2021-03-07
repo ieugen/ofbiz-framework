@@ -51,5 +51,3 @@ WORKDIR /opt/ofbiz
 COPY --from=imgbuilder /opt/ofbiz .
 
 CMD ["/opt/ofbiz/bin/ofbiz"]
-
-
