@@ -31,6 +31,8 @@ Documentation: https://github.com/ieugen/ofbiz-framework/blob/gh-action/docs/asc
 
     docker logs -f ofbiz-derby
 
+    ofbiz output dir for xml export: /opt/ofbiz/runtime
+
     # Data loading
     docker run --rm \
         --name ofbiz-derby \

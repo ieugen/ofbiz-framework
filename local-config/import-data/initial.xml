@@ -1,208 +1,448 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <entity-engine-xml>
+  <SecurityPermission permissionId="access" description="Base ACCESS permission" />
+  <SecurityPermission permissionId="create" description="Base CREATE permission" />
+  <SecurityPermission permissionId="read" description="Base READ permission" />
+  <SecurityPermission permissionId="update" description="Base UPDATE permission" />
+  <SecurityPermission permissionId="delete" description="Base DELETE permission" />
+  <SecurityPermission permissionId="OFBTOOLS_VIEW" description="Permission to access the Stock OFBiz Manager Applications." />
+  <SecurityPermission description="Permission to access the Stock OFBiz Manager Applications." permissionId="OFBTOOLS_VIEW" />
+  <SecurityGroup groupId="SUPER" description="Practic toate permisiunile, practic B0SS_MODE_ON" groupName="Super" />
+  <SecurityGroupPermission fromDate="2001-05-13 12:00:00.0" groupId="SUPER" permissionId="OFBTOOLS_VIEW" />
+  <Party partyId="Netdava" statusId="PARTY_ENABLED" partyTypeId="PARTY_GROUP" />
 
-<SecurityPermission permissionId="access" description="Base ACCESS permission"/>
-<SecurityPermission permissionId="create" description="Base CREATE permission"/>
-<SecurityPermission permissionId="read" description="Base READ permission"/>
-<SecurityPermission permissionId="update" description="Base UPDATE permission"/>
-<SecurityPermission permissionId="delete" description="Base DELETE permission"/>
-<SecurityPermission permissionId="OFBTOOLS_VIEW" description="Permission to access the Stock OFBiz Manager Applications."/>
-<SecurityPermission description="Permission to access the Stock OFBiz Manager Applications." permissionId="OFBTOOLS_VIEW"/>
+  <GlAccount glAccountId="100000" accountCode="100000"
+               glAccountClassId="ASSET" glResourceTypeId="MONEY"
+               accountName="ASSETS"/>
 
-<SecurityGroup groupId="SUPER" description="Practic toate permisiunile, practic B0SS_MODE_ON" groupName="Super"/>
+  <PartyGroup partyId="Netdava" groupName="Netdava International S.R.L." logoImageUrl="/opt/runtime/logo.png"/>
+  <PartyRole partyId="Netdava" roleTypeId="INTERNAL_ORGANIZATIO" />
+  <PartyRole partyId="Netdava" roleTypeId="BILL_FROM_VENDOR"/>
+  <PartyRole partyId="Netdava" roleTypeId="BILL_TO_CUSTOMER"/>
+  <PartyRole partyId="Netdava" roleTypeId="_NA_"/>
+  <PartyStatus partyId="Netdava" statusId="PARTY_ENABLED" statusDate="2021-01-01 00:00:00.0"/>
 
-<SecurityGroupPermission fromDate="2001-05-13 12:00:00.0" groupId="SUPER" permissionId="OFBTOOLS_VIEW"/>
+  <!-- company email -->
+  <ContactMech contactMechId="companyEmail" contactMechTypeId="EMAIL_ADDRESS" infoString="ieugen@netdava.com" />
+  <ContactMechType contactMechTypeId="EMAIL_ADDRESS" description="E-mail Address" hasTable="N" />
+  <PartyContactMech partyId="Netdava" contactMechId="companyEmail" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y" />
+  <PartyContactMechPurpose partyId="Netdava" contactMechId="companyEmail" contactMechPurposeTypeId="PRIMARY_EMAIL" fromDate="2021-01-01 00:00:00.0" />
 
-<Party partyId="Netdava" statusId="PARTY_ENABLED" partyTypeId="PARTY_GROUP"/>
+  <!-- company web-address -->
+  <ContactMech contactMechId="companyWebsite" contactMechTypeId="WEB_ADDRESS" infoString="https://netdava.com" />
+  <ContactMechType contactMechTypeId="WEB_ADDRESS" description="Website Address" hasTable="N" />
+  <PartyContactMech partyId="Netdava" contactMechId="companyWebsite" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y" />
+  <PartyContactMechPurpose partyId="Netdava" contactMechId="companyWebsite" contactMechPurposeTypeId="PRIMARY_WEB_URL" fromDate="2021-01-01 00:00:00.0" />
 
-<!-- company email -->
-<ContactMech contactMechId="companyEmail" contactMechTypeId="EMAIL_ADDRESS" infoString="ieugen@netdava.com"/>
-<ContactMechType contactMechTypeId="EMAIL_ADDRESS" description="E-mail Address" hasTable="N"/>
-<PartyContactMech partyId="Netdava" contactMechId="companyEmail" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
-<PartyContactMechPurpose partyId="Netdava" contactMechId="companyEmail" contactMechPurposeTypeId="PRIMARY_EMAIL" fromDate="2021-01-01 00:00:00.0"/>
+  <!-- company phone -->
+  <ContactMech contactMechId="phoneNo" contactMechTypeId="TELECOM_NUMBER" infoString="(+4)0720898747" />
+  <ContactMechType contactMechTypeId="TELECOM_NUMBER" description="Telefon" hasTable="N" />
+  <TelecomNumber contactMechId="phoneNo" countryCode="+40" contactNumber="720898747" askForName="Eugen Stan" />
+  <PartyContactMech partyId="Netdava" contactMechId="phoneNo" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y" />
+  <PartyContactMechPurpose partyId="Netdava" contactMechId="phoneNo" contactMechPurposeTypeId="PHONE_MOBILE" fromDate="2021-01-01 00:00:00.0" />
 
-<!-- company web-address -->
-<ContactMech contactMechId="companyWebsite" contactMechTypeId="WEB_ADDRESS" infoString="https://netdava.com"/>
-<ContactMechType contactMechTypeId="WEB_ADDRESS" description="Website Address" hasTable="N"/>
-<PartyContactMech partyId="Netdava" contactMechId="companyWebsite" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
-<PartyContactMechPurpose partyId="Netdava" contactMechId="companyWebsite" contactMechPurposeTypeId="PRIMARY_WEB_URL" fromDate="2021-01-01 00:00:00.0"/>
+  <!-- postal address -->
+  <ContactMech contactMechId="postalAddress" contactMechTypeId="POSTAL_ADDRESS" />
+  <PostalAddress contactMechId="postalAddress" toName="Netdava International S.R.L." address1="Aleea Arnăuți nr. 5" city="Ploiești" postalCode="100285" countryGeoId="ROU" />
+  <PartyContactMech partyId="Netdava" contactMechId="postalAddress" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y" />
+  <PartyContactMechPurpose partyId="Netdava" contactMechId="postalAddress" contactMechPurposeTypeId="PRIMARY_LOCATION" fromDate="2021-01-01 00:00:00.0" />
+  
+  <Party partyId="Andrew" statusId="PARTY_ENABLED" partyTypeId="PERSON" />
+  <Person partyId="Andrew" salutation="Mr." firstName="Andrei" lastName="Stan" nickname="nas" gender="M" birthDate="October 31, 1986" />
+  <PartyRole partyId="Andrew" roleTypeId="EMPLOYEE" />
+  <RoleType roleTypeId="EMPLOYEE" description="Employee" />
+  <PartyStatus partyId="Andrew" statusId="PARTY_ENABLED" statusDate="2001-01-01 12:00:00.0" />
+  <PartyRelationship partyIdFrom="Netdava" partyIdTo="Andrew" partyRelationshipTypeId="EMPLOYMENT" roleTypeIdFrom="INTERNAL_ORGANIZATIO" roleTypeIdTo="EMPLOYEE" fromDate="2021-01-01 00:00:00.0" thruDate="" />
+  <PartyRelationshipType partyRelationshipTypeId="EMPLOYMENT" />
 
-<!-- company phone -->
-<ContactMech contactMechId="phoneNo" contactMechTypeId="TELECOM_NUMBER" infoString="(+4)0720898747"/>
-<ContactMechType contactMechTypeId="TELECOM_NUMBER" description="Telefon" hasTable="N"/>
-<TelecomNumber contactMechId="phoneNo" countryCode="+40" contactNumber="720898747" askForName="Eugen Stan"/>
-<PartyContactMech partyId="Netdava" contactMechId="phoneNo" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
-<PartyContactMechPurpose partyId="Netdava" contactMechId="phoneNo" contactMechPurposeTypeId="PHONE_MOBILE" fromDate="2021-01-01 00:00:00.0"/>
+  <UserLogin userLoginId="andrew" partyId="Andrew" enabled="Y" currentPassword="{SHA}47b56994cbc2b6d10aa1be30f70165adb305a41a" />
+  <UserLoginSecurityGroup groupId="SUPER" userLoginId="andrew" fromDate="2001-01-01 12:00:00.0" />
 
-<!-- postal address -->
-<ContactMech contactMechId="postalAddress" contactMechTypeId="POSTAL_ADDRESS"/>
-<PostalAddress contactMechId="postalAddress" toName="Netdava International S.R.L." address1="Aleea Arnăuți nr. 5" city="Ploiești" postalCode="100285" countryGeoId="ROU"/>
-<PartyContactMech partyId="Netdava" contactMechId="postalAddress" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
-<PartyContactMechPurpose partyId="Netdava" contactMechId="postalAddress" contactMechPurposeTypeId="PRIMARY_LOCATION" fromDate="2021-01-01 00:00:00.0"/>
+  <SecurityGroupPermission fromDate="2001-05-13 12:00:00.0" groupId="SUPER" permissionId="access" />
+  <SecurityGroupPermission fromDate="2001-05-13 12:00:00.0" groupId="SUPER" permissionId="create" />
+  <SecurityGroupPermission fromDate="2001-05-13 12:00:00.0" groupId="SUPER" permissionId="read" />
+  <SecurityGroupPermission fromDate="2001-05-13 12:00:00.0" groupId="SUPER" permissionId="update" />
+  <SecurityGroupPermission fromDate="2001-05-13 12:00:00.0" groupId="SUPER" permissionId="delete" />
 
-<Party partyId="Andrew" statusId="PARTY_ENABLED" partyTypeId="PERSON"/>
-<UserLogin userLoginId="andrew" partyId="Andrew" enabled="Y" currentPassword="{SHA}47b56994cbc2b6d10aa1be30f70165adb305a41a"/>
-<UserLoginSecurityGroup groupId="SUPER" userLoginId="andrew" fromDate="2001-01-01 12:00:00.0"/>
+  <Party partyId="Robomarketing" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED" />
+  <PartyGroup partyId="Robomarketing" groupName="Robomarketing S.R.L." />
+  <Party partyId="DrEvidence" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED" />
+  <PartyGroup partyId="DrEvidence" groupName="Doctor Evidence, LLC" />
+  <Party partyId="ITPerspectives" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED" />
+  <PartyGroup partyId="ITPerspectives" groupName="I.T. Perspectives S.R.L." />
+  <Party partyId="VentivoCapital" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED" />
+  <PartyGroup partyId="VentivoCapital" groupName="Ventivo Capital S.R.L." />
+  <Party partyId="GpiSL" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED" />
+  <PartyGroup partyId="GpiSL" groupName="Great People Inside S.L" />
+  <Party partyId="OneSoftware" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED" />
+  <PartyGroup partyId="OneSoftware" groupName="One Software S.R.L." />
+  <Party partyId="HappySteamCrew" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED" />
+  <PartyGroup partyId="HappySteamCrew" groupName="Happy Steam Crew S.R.L." />
+  <Party partyId="GpiPteLtd" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED" />
+  <PartyGroup partyId="GpiPteLtd" groupName="Great People Inside Pte Ltd" />
+  <Party partyId="VentivoItSolutions" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED" />
+  <PartyGroup partyId="VentivoItSolutions" groupName="Ventivo It Solutions S.R.L." />
+  <Party partyId="RossmayInt" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED" />
+  <PartyGroup partyId="RossmayInt" groupName="Rossmay International S.R.L." />
+  <PartyRole partyId="Robomarketing" roleTypeId="CUSTOMER" />
+  <PartyRelationship partyIdFrom="Netdava" partyIdTo="Robomarketing" partyRelationshipTypeId="CUSTOMER_REL" roleTypeIdFrom="INTERNAL_ORGANIZATIO" roleTypeIdTo="CUSTOMER" fromDate="2021-01-01 00:00:00.0" />
+  <PartyRole partyId="DrEvidence" roleTypeId="CUSTOMER" />
+  <PartyRelationship partyIdFrom="Netdava" partyIdTo="DrEvidence" partyRelationshipTypeId="CUSTOMER_REL" roleTypeIdFrom="INTERNAL_ORGANIZATIO" roleTypeIdTo="CUSTOMER" fromDate="2021-01-01 00:00:00.0" />
+  <PartyRole partyId="ITPerspectives" roleTypeId="CUSTOMER" />
+  <PartyRelationship partyIdFrom="Netdava" partyIdTo="ITPerspectives" partyRelationshipTypeId="CUSTOMER_REL" roleTypeIdFrom="INTERNAL_ORGANIZATIO" roleTypeIdTo="CUSTOMER" fromDate="2021-01-01 00:00:00.0" />
+  <PartyRole partyId="VentivoCapital" roleTypeId="CUSTOMER" />
+  <PartyRelationship partyIdFrom="Netdava" partyIdTo="VentivoCapital" partyRelationshipTypeId="CUSTOMER_REL" roleTypeIdFrom="INTERNAL_ORGANIZATIO" roleTypeIdTo="CUSTOMER" fromDate="2021-01-01 00:00:00.0" />
+  <PartyRole partyId="GpiSL" roleTypeId="CUSTOMER" />
+  <PartyRelationship partyIdFrom="Netdava" partyIdTo="GpiSL" partyRelationshipTypeId="CUSTOMER_REL" roleTypeIdFrom="INTERNAL_ORGANIZATIO" roleTypeIdTo="CUSTOMER" fromDate="2021-01-01 00:00:00.0" />
+  <PartyRole partyId="OneSoftware" roleTypeId="CUSTOMER" />
+  <PartyRelationship partyIdFrom="Netdava" partyIdTo="OneSoftware" partyRelationshipTypeId="CUSTOMER_REL" roleTypeIdFrom="INTERNAL_ORGANIZATIO" roleTypeIdTo="CUSTOMER" fromDate="2021-01-01 00:00:00.0" />
+  <PartyRole partyId="HappySteamCrew" roleTypeId="CUSTOMER" />
+  <PartyRelationship partyIdFrom="Netdava" partyIdTo="HappySteamCrew" partyRelationshipTypeId="CUSTOMER_REL" roleTypeIdFrom="INTERNAL_ORGANIZATIO" roleTypeIdTo="CUSTOMER" fromDate="2021-01-01 00:00:00.0" />
+  <PartyRole partyId="GpiPteLtd" roleTypeId="CUSTOMER" />
+  <PartyRelationship partyIdFrom="Netdava" partyIdTo="GpiPteLtd" partyRelationshipTypeId="CUSTOMER_REL" roleTypeIdFrom="INTERNAL_ORGANIZATIO" roleTypeIdTo="CUSTOMER" fromDate="2021-01-01 00:00:00.0" />
+  <PartyRole partyId="VentivoItSolutions" roleTypeId="CUSTOMER" />
+  <PartyRelationship partyIdFrom="Netdava" partyIdTo="VentivoItSolutions" partyRelationshipTypeId="CUSTOMER_REL" roleTypeIdFrom="INTERNAL_ORGANIZATIO" roleTypeIdTo="CUSTOMER" fromDate="2021-01-01 00:00:00.0" />
+  <PartyRole partyId="RossmayInt" roleTypeId="CUSTOMER" />
+  <PartyRelationship partyIdFrom="Netdava" partyIdTo="RossmayInt" partyRelationshipTypeId="CUSTOMER_REL" roleTypeIdFrom="INTERNAL_ORGANIZATIO" roleTypeIdTo="CUSTOMER" fromDate="2021-01-01 00:00:00.0" />
+  <ContactMech contactMechId="PA505195" contactMechTypeId="POSTAL_ADDRESS" />
+  <PostalAddress contactMechId="PA505195" toName="Robomarketing S.R.L." address1="Str. Sloboziei, 16, -" address2="" city="Călărași" postalCode="910014" iso="ROU" />
+  <PartyContactMech partyId="Robomarketing" contactMechId="PA505195" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y" />
+  <PartyContactMechPurpose partyId="Robomarketing" contactMechId="PA505195" contactMechPurposeTypeId="PRIMARY_LOCATION" fromDate="2021-01-01 00:00:00.0" />
+  <ContactMech contactMechId="PA570067" contactMechTypeId="POSTAL_ADDRESS" />
+  <PostalAddress contactMechId="PA570067" toName="Doctor Evidence, LLC" address1="301 Arizona Ave, Suite 301" address2="Santa Monica" city="Santa Monica" postalCode="90401" iso="USA" />
+  <PartyContactMech partyId="DrEvidence" contactMechId="PA570067" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y" />
+  <PartyContactMechPurpose partyId="DrEvidence" contactMechId="PA570067" contactMechPurposeTypeId="PRIMARY_LOCATION" fromDate="2021-01-01 00:00:00.0" />
+  <ContactMech contactMechId="PA491820" contactMechTypeId="POSTAL_ADDRESS" />
+  <PostalAddress contactMechId="PA491820" toName="I.T. Perspectives S.R.L." address1="Str. G-ral Ion Dragalina, 1, -" address2="" city="Sibiu" postalCode="550076" iso="ROU" />
+  <PartyContactMech partyId="ITPerspectives" contactMechId="PA491820" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y" />
+  <PartyContactMechPurpose partyId="ITPerspectives" contactMechId="PA491820" contactMechPurposeTypeId="PRIMARY_LOCATION" fromDate="2021-01-01 00:00:00.0" />
+  <ContactMech contactMechId="PA325933" contactMechTypeId="POSTAL_ADDRESS" />
+  <PostalAddress contactMechId="PA325933" toName="Ventivo Capital S.R.L." address1="Șos. Pantelimon, 126, București" address2="" city="Sect 2" postalCode="21643" iso="ROU" />
+  <PartyContactMech partyId="VentivoCapital" contactMechId="PA325933" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y" />
+  <PartyContactMechPurpose partyId="VentivoCapital" contactMechId="PA325933" contactMechPurposeTypeId="PRIMARY_LOCATION" fromDate="2021-01-01 00:00:00.0" />
+  <ContactMech contactMechId="PA303406" contactMechTypeId="POSTAL_ADDRESS" />
+  <PostalAddress contactMechId="PA303406" toName="Great People Inside S.L" address1="Avenida de Europa 14. " address2="28108-Alcobendas" city="Madrid" postalCode="28108" iso="ESP" />
+  <PartyContactMech partyId="GpiSL" contactMechId="PA303406" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y" />
+  <PartyContactMechPurpose partyId="GpiSL" contactMechId="PA303406" contactMechPurposeTypeId="PRIMARY_LOCATION" fromDate="2021-01-01 00:00:00.0" />
+  <ContactMech contactMechId="PA440108" contactMechTypeId="POSTAL_ADDRESS" />
+  <PostalAddress contactMechId="PA440108" toName="One Software S.R.L." address1="Str. Spitalului, 7, Locuin?a C1" address2="" city="Ploiești" postalCode="100144" iso="ROU" />
+  <PartyContactMech partyId="OneSoftware" contactMechId="PA440108" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y" />
+  <PartyContactMechPurpose partyId="OneSoftware" contactMechId="PA440108" contactMechPurposeTypeId="PRIMARY_LOCATION" fromDate="2021-01-01 00:00:00.0" />
+  <ContactMech contactMechId="PA447781" contactMechTypeId="POSTAL_ADDRESS" />
+  <PostalAddress contactMechId="PA447781" toName="Happy Steam Crew S.R.L." address1="Str. Mihai Viteazul, 430, -" address2="" city="Valea Nicovani" postalCode="107632" iso="ROU" />
+  <PartyContactMech partyId="HappySteamCrew" contactMechId="PA447781" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y" />
+  <PartyContactMechPurpose partyId="HappySteamCrew" contactMechId="PA447781" contactMechPurposeTypeId="PRIMARY_LOCATION" fromDate="2021-01-01 00:00:00.0" />
+  <ContactMech contactMechId="PA342940" contactMechTypeId="POSTAL_ADDRESS" />
+  <PostalAddress contactMechId="PA342940" toName="Great People Inside Pte Ltd" address1="160 Robinson Road" address2="#14-04 Singapore Business Federation  Centre" city="Singapore" postalCode="068914" iso="SGP" />
+  <PartyContactMech partyId="GpiPteLtd" contactMechId="PA342940" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y" />
+  <PartyContactMechPurpose partyId="GpiPteLtd" contactMechId="PA342940" contactMechPurposeTypeId="PRIMARY_LOCATION" fromDate="2021-01-01 00:00:00.0" />
+  <ContactMech contactMechId="PA548513" contactMechTypeId="POSTAL_ADDRESS" />
+  <PostalAddress contactMechId="PA548513" toName="Ventivo It Solutions S.R.L." address1="Str. Mihai Viteazul, 24-26, Ap:13, Mansardă 1 + Mansardă 2" address2="" city="Brașov" postalCode="" iso="ROU" />
+  <PartyContactMech partyId="VentivoItSolutions" contactMechId="PA548513" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y" />
+  <PartyContactMechPurpose partyId="VentivoItSolutions" contactMechId="PA548513" contactMechPurposeTypeId="PRIMARY_LOCATION" fromDate="2021-01-01 00:00:00.0" />
+  <ContactMech contactMechId="PA213863" contactMechTypeId="POSTAL_ADDRESS" />
+  <PostalAddress contactMechId="PA213863" toName="Rossmay International S.R.L." address1="Str. Ion Câmpineanu, 11, București" address2="" city="Sect 1" postalCode="10031" iso="ROU" />
+  <PartyContactMech partyId="RossmayInt" contactMechId="PA213863" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y" />
+  <PartyContactMechPurpose partyId="RossmayInt" contactMechId="PA213863" contactMechPurposeTypeId="PRIMARY_LOCATION" fromDate="2021-01-01 00:00:00.0" />
+  <ContactMech contactMechId="CE505195" contactMechTypeId="EMAIL_ADDRESS" infoString="office@robomarketing.ro" />
+  <ContactMechType contactMechTypeId="EMAIL_ADDRESS" description="Email Address" />
+  <PartyContactMech partyId="Robomarketing" contactMechId="CE505195" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y" />
+  <PartyContactMechPurpose partyId="Robomarketing" contactMechId="CE505195" contactMechPurposeTypeId="PRIMARY_EMAIL" fromDate="2021-01-01 00:00:00.0" />
+  <ContactMech contactMechId="CE570067" contactMechTypeId="EMAIL_ADDRESS" infoString="accountspayable@doctorevidence.com" />
+  <ContactMechType contactMechTypeId="EMAIL_ADDRESS" description="Email Address" />
+  <PartyContactMech partyId="DrEvidence" contactMechId="CE570067" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y" />
+  <PartyContactMechPurpose partyId="DrEvidence" contactMechId="CE570067" contactMechPurposeTypeId="PRIMARY_EMAIL" fromDate="2021-01-01 00:00:00.0" />
+  <ContactMech contactMechId="CE491820" contactMechTypeId="EMAIL_ADDRESS" infoString="radu.secosan@itperspectives.ro" />
+  <ContactMechType contactMechTypeId="EMAIL_ADDRESS" description="Email Address" />
+  <PartyContactMech partyId="ITPerspectives" contactMechId="CE491820" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y" />
+  <PartyContactMechPurpose partyId="ITPerspectives" contactMechId="CE491820" contactMechPurposeTypeId="PRIMARY_EMAIL" fromDate="2021-01-01 00:00:00.0" />
+  <ContactMech contactMechId="CE325933" contactMechTypeId="EMAIL_ADDRESS" infoString="office@ventivogroup.com" />
+  <ContactMechType contactMechTypeId="EMAIL_ADDRESS" description="Email Address" />
+  <PartyContactMech partyId="VentivoCapital" contactMechId="CE325933" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y" />
+  <PartyContactMechPurpose partyId="VentivoCapital" contactMechId="CE325933" contactMechPurposeTypeId="PRIMARY_EMAIL" fromDate="2021-01-01 00:00:00.0" />
+  <ContactMech contactMechId="CE303406" contactMechTypeId="EMAIL_ADDRESS" infoString="pablo.fernandez@greatpeopleinside.es" />
+  <ContactMechType contactMechTypeId="EMAIL_ADDRESS" description="Email Address" />
+  <PartyContactMech partyId="GpiSL" contactMechId="CE303406" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y" />
+  <PartyContactMechPurpose partyId="GpiSL" contactMechId="CE303406" contactMechPurposeTypeId="PRIMARY_EMAIL" fromDate="2021-01-01 00:00:00.0" />
+  <ContactMech contactMechId="CE440108" contactMechTypeId="EMAIL_ADDRESS" infoString="vlad@onesoftware.ro" />
+  <ContactMechType contactMechTypeId="EMAIL_ADDRESS" description="Email Address" />
+  <PartyContactMech partyId="OneSoftware" contactMechId="CE440108" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y" />
+  <PartyContactMechPurpose partyId="OneSoftware" contactMechId="CE440108" contactMechPurposeTypeId="PRIMARY_EMAIL" fromDate="2021-01-01 00:00:00.0" />
+  <ContactMech contactMechId="CE447781" contactMechTypeId="EMAIL_ADDRESS" infoString="office@calcatoriamobila.ro" />
+  <ContactMechType contactMechTypeId="EMAIL_ADDRESS" description="Email Address" />
+  <PartyContactMech partyId="HappySteamCrew" contactMechId="CE447781" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y" />
+  <PartyContactMechPurpose partyId="HappySteamCrew" contactMechId="CE447781" contactMechPurposeTypeId="PRIMARY_EMAIL" fromDate="2021-01-01 00:00:00.0" />
+  <ContactMech contactMechId="CE342940" contactMechTypeId="EMAIL_ADDRESS" infoString="contact@greatpeopleinside.com" />
+  <ContactMechType contactMechTypeId="EMAIL_ADDRESS" description="Email Address" />
+  <PartyContactMech partyId="GpiPteLtd" contactMechId="CE342940" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y" />
+  <PartyContactMechPurpose partyId="GpiPteLtd" contactMechId="CE342940" contactMechPurposeTypeId="PRIMARY_EMAIL" fromDate="2021-01-01 00:00:00.0" />
+  <ContactMech contactMechId="CE548513" contactMechTypeId="EMAIL_ADDRESS" infoString="ruxandra@ventivogroup.com" />
+  <ContactMechType contactMechTypeId="EMAIL_ADDRESS" description="Email Address" />
+  <PartyContactMech partyId="VentivoItSolutions" contactMechId="CE548513" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y" />
+  <PartyContactMechPurpose partyId="VentivoItSolutions" contactMechId="CE548513" contactMechPurposeTypeId="PRIMARY_EMAIL" fromDate="2021-01-01 00:00:00.0" />
+  <ContactMech contactMechId="CE213863" contactMechTypeId="EMAIL_ADDRESS" infoString="printquickdesign@yahoo.com" />
+  <ContactMechType contactMechTypeId="EMAIL_ADDRESS" description="Email Address" />
+  <PartyContactMech partyId="RossmayInt" contactMechId="CE213863" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y" />
+  <PartyContactMechPurpose partyId="RossmayInt" contactMechId="CE213863" contactMechPurposeTypeId="PRIMARY_EMAIL" fromDate="2021-01-01 00:00:00.0" />
+  <ContactMech contactMechId="WEB505195" contactMechTypeId="WEB_ADDRESS" infoString="https://www.robomarketing.ro" />
+  <ContactMechType contactMechTypeId="WEB_ADDRESS" description="Website Address" />
+  <PartyContactMech partyId="Robomarketing" contactMechId="WEB505195" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y" />
+  <PartyContactMechPurpose partyId="Robomarketing" contactMechId="WEB505195" contactMechPurposeTypeId="PRIMARY_WEB_URL" fromDate="2021-01-01 00:00:00.0" />
+  <ContactMech contactMechId="WEB570067" contactMechTypeId="WEB_ADDRESS" infoString="https://drevidence.com/" />
+  <ContactMechType contactMechTypeId="WEB_ADDRESS" description="Website Address" />
+  <PartyContactMech partyId="DrEvidence" contactMechId="WEB570067" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y" />
+  <PartyContactMechPurpose partyId="DrEvidence" contactMechId="WEB570067" contactMechPurposeTypeId="PRIMARY_WEB_URL" fromDate="2021-01-01 00:00:00.0" />
+  <ContactMech contactMechId="WEB491820" contactMechTypeId="WEB_ADDRESS" infoString="https://www.itperspectives.ro/" />
+  <ContactMechType contactMechTypeId="WEB_ADDRESS" description="Website Address" />
+  <PartyContactMech partyId="ITPerspectives" contactMechId="WEB491820" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y" />
+  <PartyContactMechPurpose partyId="ITPerspectives" contactMechId="WEB491820" contactMechPurposeTypeId="PRIMARY_WEB_URL" fromDate="2021-01-01 00:00:00.0" />
+  <ContactMech contactMechId="WEB325933" contactMechTypeId="WEB_ADDRESS" infoString="https://ventivogroup.com/" />
+  <ContactMechType contactMechTypeId="WEB_ADDRESS" description="Website Address" />
+  <PartyContactMech partyId="VentivoCapital" contactMechId="WEB325933" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y" />
+  <PartyContactMechPurpose partyId="VentivoCapital" contactMechId="WEB325933" contactMechPurposeTypeId="PRIMARY_WEB_URL" fromDate="2021-01-01 00:00:00.0" />
+  <ContactMech contactMechId="WEB440108" contactMechTypeId="WEB_ADDRESS" infoString="onesoftware.ro" />
+  <ContactMechType contactMechTypeId="WEB_ADDRESS" description="Website Address" />
+  <PartyContactMech partyId="OneSoftware" contactMechId="WEB440108" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y" />
+  <PartyContactMechPurpose partyId="OneSoftware" contactMechId="WEB440108" contactMechPurposeTypeId="PRIMARY_WEB_URL" fromDate="2021-01-01 00:00:00.0" />
+  <ContactMech contactMechId="WEB447781" contactMechTypeId="WEB_ADDRESS" infoString="https://calcatoriamobila.ro/" />
+  <ContactMechType contactMechTypeId="WEB_ADDRESS" description="Website Address" />
+  <PartyContactMech partyId="HappySteamCrew" contactMechId="WEB447781" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y" />
+  <PartyContactMechPurpose partyId="HappySteamCrew" contactMechId="WEB447781" contactMechPurposeTypeId="PRIMARY_WEB_URL" fromDate="2021-01-01 00:00:00.0" />
+  <ContactMech contactMechId="WEB342940" contactMechTypeId="WEB_ADDRESS" infoString="greatpeopleinside.com" />
+  <ContactMechType contactMechTypeId="WEB_ADDRESS" description="Website Address" />
+  <PartyContactMech partyId="GpiPteLtd" contactMechId="WEB342940" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y" />
+  <PartyContactMechPurpose partyId="GpiPteLtd" contactMechId="WEB342940" contactMechPurposeTypeId="PRIMARY_WEB_URL" fromDate="2021-01-01 00:00:00.0" />
+  <ContactMech contactMechId="WEB548513" contactMechTypeId="WEB_ADDRESS" infoString="https://ventivogroup.com" />
+  <ContactMechType contactMechTypeId="WEB_ADDRESS" description="Website Address" />
+  <PartyContactMech partyId="VentivoItSolutions" contactMechId="WEB548513" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y" />
+  <PartyContactMechPurpose partyId="VentivoItSolutions" contactMechId="WEB548513" contactMechPurposeTypeId="PRIMARY_WEB_URL" fromDate="2021-01-01 00:00:00.0" />
+  <ContactMech contactMechId="PHONE505195" contactMechTypeId="TELECOM_NUMBER" infoString="0775341146" />
+  <ContactMechType contactMechTypeId="TELECOM_NUMBER" description="Telephone Number" />
+  <TelecomNumber contactMechId="PHONE505195" countryCode="40" contactNumber="0775341146" />
+  <PartyContactMech partyId="Robomarketing" contactMechId="PHONE505195" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y" />
+  <PartyContactMechPurpose partyId="Robomarketing" contactMechId="PHONE505195" contactMechPurposeTypeId="PHONE_MOBILE" fromDate="2021-01-01 00:00:00.0" />
+  <ContactMech contactMechId="PHONE491820" contactMechTypeId="TELECOM_NUMBER" infoString="0369401424" />
+  <ContactMechType contactMechTypeId="TELECOM_NUMBER" description="Telephone Number" />
+  <TelecomNumber contactMechId="PHONE491820" countryCode="40" contactNumber="0369401424" />
+  <PartyContactMech partyId="ITPerspectives" contactMechId="PHONE491820" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y" />
+  <PartyContactMechPurpose partyId="ITPerspectives" contactMechId="PHONE491820" contactMechPurposeTypeId="PHONE_MOBILE" fromDate="2021-01-01 00:00:00.0" />
+  <ContactMech contactMechId="PHONE303406" contactMechTypeId="TELECOM_NUMBER" infoString="34 911890563" />
+  <ContactMechType contactMechTypeId="TELECOM_NUMBER" description="Telephone Number" />
+  <TelecomNumber contactMechId="PHONE303406" countryCode="34" contactNumber="34 911890563" />
+  <PartyContactMech partyId="GpiSL" contactMechId="PHONE303406" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y" />
+  <PartyContactMechPurpose partyId="GpiSL" contactMechId="PHONE303406" contactMechPurposeTypeId="PHONE_MOBILE" fromDate="2021-01-01 00:00:00.0" />
+  <ContactMech contactMechId="PHONE440108" contactMechTypeId="TELECOM_NUMBER" infoString="0721218906" />
+  <ContactMechType contactMechTypeId="TELECOM_NUMBER" description="Telephone Number" />
+  <TelecomNumber contactMechId="PHONE440108" countryCode="40" contactNumber="0721218906" />
+  <PartyContactMech partyId="OneSoftware" contactMechId="PHONE440108" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y" />
+  <PartyContactMechPurpose partyId="OneSoftware" contactMechId="PHONE440108" contactMechPurposeTypeId="PHONE_MOBILE" fromDate="2021-01-01 00:00:00.0" />
+  <ContactMech contactMechId="PHONE447781" contactMechTypeId="TELECOM_NUMBER" infoString="0720062202" />
+  <ContactMechType contactMechTypeId="TELECOM_NUMBER" description="Telephone Number" />
+  <TelecomNumber contactMechId="PHONE447781" countryCode="40" contactNumber="0720062202" />
+  <PartyContactMech partyId="HappySteamCrew" contactMechId="PHONE447781" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y" />
+  <PartyContactMechPurpose partyId="HappySteamCrew" contactMechId="PHONE447781" contactMechPurposeTypeId="PHONE_MOBILE" fromDate="2021-01-01 00:00:00.0" />
+  <ContactMech contactMechId="PHONE548513" contactMechTypeId="TELECOM_NUMBER" infoString="0731071751" />
+  <ContactMechType contactMechTypeId="TELECOM_NUMBER" description="Telephone Number" />
+  <TelecomNumber contactMechId="PHONE548513" countryCode="40" contactNumber="0731071751" />
+  <PartyContactMech partyId="VentivoItSolutions" contactMechId="PHONE548513" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y" />
+  <PartyContactMechPurpose partyId="VentivoItSolutions" contactMechId="PHONE548513" contactMechPurposeTypeId="PHONE_MOBILE" fromDate="2021-01-01 00:00:00.0" />
+  <ContactMech contactMechId="PHONE213863" contactMechTypeId="TELECOM_NUMBER" infoString="0773886454" />
+  <ContactMechType contactMechTypeId="TELECOM_NUMBER" description="Telephone Number" />
+  <TelecomNumber contactMechId="PHONE213863" countryCode="40" contactNumber="0773886454" />
+  <PartyContactMech partyId="RossmayInt" contactMechId="PHONE213863" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y" />
+  <PartyContactMechPurpose partyId="RossmayInt" contactMechId="PHONE213863" contactMechPurposeTypeId="PHONE_MOBILE" fromDate="2021-01-01 00:00:00.0" />
 
-<SecurityGroupPermission fromDate="2001-05-13 12:00:00.0" groupId="SUPER" permissionId="access"/>
-<SecurityGroupPermission fromDate="2001-05-13 12:00:00.0" groupId="SUPER" permissionId="create"/>
-<SecurityGroupPermission fromDate="2001-05-13 12:00:00.0" groupId="SUPER" permissionId="read"/>
-<SecurityGroupPermission fromDate="2001-05-13 12:00:00.0" groupId="SUPER" permissionId="update"/>
-<SecurityGroupPermission fromDate="2001-05-13 12:00:00.0" groupId="SUPER" permissionId="delete"/>
 
-<Party partyId="Robomarketing" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>
-  <Party partyId="ITPerspectives" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>
-  <Party partyId="VentivoCapital" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>
-  <Party partyId="GpiSL" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>
-  <Party partyId="OneSoftware" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>
-  <Party partyId="HappySteamCrew" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>
-  <Party partyId="GpiPteLtd" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>
-  <Party partyId="VentivoItSolutions" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>
-  <Party partyId="RossmayInt" partyTypeId="PARTY_GROUP" statusId="PARTY_ENABLED"/>
+  <Invoice invoiceId="2020-SERV-4-RO" invoiceTypeId="SALES_INVOICE" partyIdFrom="Netdava" partyId="Robomarketing" statusId="INVOICE_PAID" invoiceDate="2020-04-23 16:51:09.000" dueDate="2020-04-28" currencyUomId="RON"/>
+  <InvoiceItem invoiceId="2020-SERV-4-RO" invoiceItemSeqId="1" uomId="RON" quantity="1.0" amount="967.64" description="Integrare ManyChat Mobilpay Robomarketing"/>
+  <Payment amount="967.64" statusId="PMNT_RECEIVED" partyIdFrom="Robomarketing" actualCurrencyAmount="967.6400146484375" currencyUomId="RON" paymentId="2020-SERV-4-RO" actualCurrencyUomId="RON" partyIdTo="Netdava" paymentTypeId="CUSTOMER_PAYMENT"/>
+  <PaymentApplication paymentApplicationId="2020-SERV-4-RO" paymentId="2020-SERV-4-RO" invoiceId="2020-SERV-4-RO" amountApplied="967.6400146484375"/>
+  <Invoice invoiceId="2020-SERV-5-RO" invoiceTypeId="SALES_INVOICE" partyIdFrom="Netdava" partyId="Robomarketing" statusId="INVOICE_PAID" invoiceDate="2020-04-26 16:55:27.000" dueDate="2020-05-01" currencyUomId="RON"/>
+  <InvoiceItem invoiceId="2020-SERV-5-RO" invoiceItemSeqId="1" uomId="RON" quantity="1.0" amount="100.0" description="Prestari servicii IT - instalare aplicație"/>
+  <Payment amount="100.0" statusId="PMNT_RECEIVED" partyIdFrom="Robomarketing" actualCurrencyAmount="100.0" currencyUomId="RON" paymentId="2020-SERV-5-RO" actualCurrencyUomId="RON" partyIdTo="Netdava" paymentTypeId="CUSTOMER_PAYMENT"/>
+  <PaymentApplication paymentApplicationId="2020-SERV-5-RO" paymentId="2020-SERV-5-RO" invoiceId="2020-SERV-5-RO" amountApplied="100.0"/>
+  <Invoice invoiceId="2020-SERV-8-RO" invoiceTypeId="SALES_INVOICE" partyIdFrom="Netdava" partyId="Robomarketing" statusId="INVOICE_PAID" invoiceDate="2020-07-27 16:36:49.000" dueDate="2020-08-01" currencyUomId="RON"/>
+  <InvoiceItem invoiceId="2020-SERV-8-RO" invoiceItemSeqId="1" uomId="RON" quantity="1.0" amount="200.0" description="Dezvoltare funcționalitate robot chat - numerologie"/>
+  <Payment amount="200.0" statusId="PMNT_RECEIVED" partyIdFrom="Robomarketing" actualCurrencyAmount="200.0" currencyUomId="RON" paymentId="2020-SERV-8-RO" actualCurrencyUomId="RON" partyIdTo="Netdava" paymentTypeId="CUSTOMER_PAYMENT"/>
+  <PaymentApplication paymentApplicationId="2020-SERV-8-RO" paymentId="2020-SERV-8-RO" invoiceId="2020-SERV-8-RO" amountApplied="200.0"/>
+  <Invoice invoiceId="2020-SERV-12-RO" invoiceTypeId="SALES_INVOICE" partyIdFrom="Netdava" partyId="Robomarketing" statusId="INVOICE_PAID" invoiceDate="2020-11-20 15:04:23.000" dueDate="2020-11-25" currencyUomId="RON"/>
+  <InvoiceItem invoiceId="2020-SERV-12-RO" invoiceItemSeqId="1" uomId="RON" quantity="1.0" amount="200.0" description="Integrare Silferbots - Mobilpay"/>
+  <Payment amount="200.0" statusId="PMNT_RECEIVED" partyIdFrom="Robomarketing" actualCurrencyAmount="200.0" currencyUomId="RON" paymentId="2020-SERV-12-RO" actualCurrencyUomId="RON" partyIdTo="Netdava" paymentTypeId="CUSTOMER_PAYMENT"/>
+  <PaymentApplication paymentApplicationId="2020-SERV-12-RO" paymentId="2020-SERV-12-RO" invoiceId="2020-SERV-12-RO" amountApplied="200.0"/>
+  <Invoice invoiceId="2020-SERV-15-RO" invoiceTypeId="SALES_INVOICE" partyIdFrom="Netdava" partyId="Robomarketing" statusId="INVOICE_PAID" invoiceDate="2020-12-10 12:30:28.000" dueDate="2020-12-24" currencyUomId="RON"/>
+  <InvoiceItem invoiceId="2020-SERV-15-RO" invoiceItemSeqId="1" uomId="RON" quantity="1.0" amount="300.0" description="Dezvoltare software"/>
+  <Payment amount="300.0" statusId="PMNT_RECEIVED" partyIdFrom="Robomarketing" actualCurrencyAmount="300.0" currencyUomId="RON" paymentId="2020-SERV-15-RO" actualCurrencyUomId="RON" partyIdTo="Netdava" paymentTypeId="CUSTOMER_PAYMENT"/>
+  <PaymentApplication paymentApplicationId="2020-SERV-15-RO" paymentId="2020-SERV-15-RO" invoiceId="2020-SERV-15-RO" amountApplied="300.0"/>
+  <Invoice invoiceId="2021-SERV-1" invoiceTypeId="SALES_INVOICE" partyIdFrom="Netdava" partyId="DrEvidence" statusId="INVOICE_IN_PROCESS" invoiceDate="2021-02-04 18:36:11.000" dueDate="2021-02-14" currencyUomId="USD"/>
+  <InvoiceItem invoiceId="2021-SERV-1" invoiceItemSeqId="1" uomId="USD" quantity="1.0" amount="2083.25" description="Doctor Evidence platform services"/>
+  <Payment amount="0.0" statusId="PMNT_RECEIVED" partyIdFrom="DrEvidence" actualCurrencyAmount="0.0" currencyUomId="USD" paymentId="2021-SERV-1" actualCurrencyUomId="USD" partyIdTo="Netdava" paymentTypeId="CUSTOMER_PAYMENT"/>
+  <PaymentApplication paymentApplicationId="2021-SERV-1" paymentId="2021-SERV-1" invoiceId="2021-SERV-1" amountApplied="0.0"/>
+  <Invoice invoiceId="2020-SERV-1-RO" invoiceTypeId="SALES_INVOICE" partyIdFrom="Netdava" partyId="ITPerspectives" statusId="INVOICE_PAID" invoiceDate="2020-02-08 13:32:14.000" dueDate="2020-02-14" currencyUomId="EUR"/>
+  <InvoiceItem invoiceId="2020-SERV-1-RO" invoiceItemSeqId="1" uomId="EUR" quantity="1.0" amount="1200.0" description="Gr8pi IT consultancy services"/>
+  <InvoiceItem invoiceId="2020-SERV-1-RO" invoiceItemSeqId="2" uomId="EUR" quantity="1.0" amount="720.0" description="Gr8pi Operations and maintenance"/>
+  <InvoiceItem invoiceId="2020-SERV-1-RO" invoiceItemSeqId="3" uomId="EUR" quantity="1.0" amount="2720.0" description="Gr8pi Platfrom development"/>
+  <InvoiceItem invoiceId="2020-SERV-1-RO" invoiceItemSeqId="4" uomId="EUR" quantity="1.0" amount="178.0" description="Transport and Accomodation training Sibiu ian"/>
+  <Payment amount="23025.22" statusId="PMNT_RECEIVED" partyIdFrom="ITPerspectives" actualCurrencyAmount="110037.5252606878" currencyUomId="EUR" paymentId="2020-SERV-1-RO" actualCurrencyUomId="RON" partyIdTo="Netdava" paymentTypeId="CUSTOMER_PAYMENT"/>
+  <PaymentApplication paymentApplicationId="2020-SERV-1-RO" paymentId="2020-SERV-1-RO" invoiceId="2020-SERV-1-RO" amountApplied="110037.5252606878"/>
+  <Invoice invoiceId="2020-SERV-2-RO" invoiceTypeId="SALES_INVOICE" partyIdFrom="Netdava" partyId="ITPerspectives" statusId="INVOICE_PAID" invoiceDate="2020-03-02 14:50:17.000" dueDate="2020-03-14" currencyUomId="EUR"/>
+  <InvoiceItem invoiceId="2020-SERV-2-RO" invoiceItemSeqId="1" uomId="EUR" quantity="1.0" amount="1200.0" description="Gr8pi - Servicii consultanță IT "/>
+  <InvoiceItem invoiceId="2020-SERV-2-RO" invoiceItemSeqId="2" uomId="EUR" quantity="1.0" amount="720.0" description="Gr8pi - Operațiuni și mentenanță"/>
+  <InvoiceItem invoiceId="2020-SERV-2-RO" invoiceItemSeqId="3" uomId="EUR" quantity="1.0" amount="2720.0" description="Gr8pi Dezvoltare platformă"/>
+  <Payment amount="22330.92" statusId="PMNT_RECEIVED" partyIdFrom="ITPerspectives" actualCurrencyAmount="107472.0137250172" currencyUomId="EUR" paymentId="2020-SERV-2-RO" actualCurrencyUomId="RON" partyIdTo="Netdava" paymentTypeId="CUSTOMER_PAYMENT"/>
+  <PaymentApplication paymentApplicationId="2020-SERV-2-RO" paymentId="2020-SERV-2-RO" invoiceId="2020-SERV-2-RO" amountApplied="107472.0137250172"/>
+  <Invoice invoiceId="2020-SERV-6-RO" invoiceTypeId="SALES_INVOICE" partyIdFrom="Netdava" partyId="ITPerspectives" statusId="INVOICE_PAID" invoiceDate="2020-05-01 11:22:16.000" dueDate="2020-05-14" currencyUomId="EUR"/>
+  <InvoiceItem invoiceId="2020-SERV-6-RO" invoiceItemSeqId="1" uomId="EUR" quantity="1.0" amount="720.0" description="Gr8pi - Operațiuni și mentenanță"/>
+  <InvoiceItem invoiceId="2020-SERV-6-RO" invoiceItemSeqId="2" uomId="EUR" quantity="1.0" amount="1200.0" description="Gr8pi - Servicii consultanță IT "/>
+  <InvoiceItem invoiceId="2020-SERV-6-RO" invoiceItemSeqId="3" uomId="EUR" quantity="1.0" amount="2720.0" description="Gr8pi Dezvoltare platformă"/>
+  <Payment amount="22469.2" statusId="PMNT_RECEIVED" partyIdFrom="ITPerspectives" actualCurrencyAmount="108807.10193102248" currencyUomId="EUR" paymentId="2020-SERV-6-RO" actualCurrencyUomId="RON" partyIdTo="Netdava" paymentTypeId="CUSTOMER_PAYMENT"/>
+  <PaymentApplication paymentApplicationId="2020-SERV-6-RO" paymentId="2020-SERV-6-RO" invoiceId="2020-SERV-6-RO" amountApplied="108807.10193102248"/>
+  <Invoice invoiceId="2020-SERV-7-RO" invoiceTypeId="SALES_INVOICE" partyIdFrom="Netdava" partyId="ITPerspectives" statusId="INVOICE_PAID" invoiceDate="2020-05-29 16:15:17.000" dueDate="2020-06-12" currencyUomId="EUR"/>
+  <InvoiceItem invoiceId="2020-SERV-7-RO" invoiceItemSeqId="1" uomId="EUR" quantity="1.0" amount="1200.0" description="Gr8pi - Servicii consultanță IT "/>
+  <InvoiceItem invoiceId="2020-SERV-7-RO" invoiceItemSeqId="2" uomId="EUR" quantity="1.0" amount="2720.0" description="Gr8pi Dezvoltare platformă"/>
+  <InvoiceItem invoiceId="2020-SERV-7-RO" invoiceItemSeqId="3" uomId="EUR" quantity="1.0" amount="720.0" description="Gr8pi - Operațiuni și mentenanță"/>
+  <Payment amount="22467.34" statusId="PMNT_RECEIVED" partyIdFrom="ITPerspectives" actualCurrencyAmount="108789.10947997123" currencyUomId="EUR" paymentId="2020-SERV-7-RO" actualCurrencyUomId="RON" partyIdTo="Netdava" paymentTypeId="CUSTOMER_PAYMENT"/>
+  <PaymentApplication paymentApplicationId="2020-SERV-7-RO" paymentId="2020-SERV-7-RO" invoiceId="2020-SERV-7-RO" amountApplied="108789.10947997123"/>
+  <Invoice invoiceId="2020-SERV-9-RO" invoiceTypeId="SALES_INVOICE" partyIdFrom="Netdava" partyId="ITPerspectives" statusId="INVOICE_PAID" invoiceDate="2020-07-31 13:02:23.000" dueDate="2020-08-14" currencyUomId="RON"/>
+  <InvoiceItem invoiceId="2020-SERV-9-RO" invoiceItemSeqId="1" uomId="RON" quantity="1.0" amount="3479.11" description="Gr8pi - Operațiuni și mentenanță"/>
+  <Payment amount="3479.11" statusId="PMNT_RECEIVED" partyIdFrom="ITPerspectives" actualCurrencyAmount="3479.110107421875" currencyUomId="RON" paymentId="2020-SERV-9-RO" actualCurrencyUomId="RON" partyIdTo="Netdava" paymentTypeId="CUSTOMER_PAYMENT"/>
+  <PaymentApplication paymentApplicationId="2020-SERV-9-RO" paymentId="2020-SERV-9-RO" invoiceId="2020-SERV-9-RO" amountApplied="3479.110107421875"/>
+  <Invoice invoiceId="2020-SERV-10-RO" invoiceTypeId="SALES_INVOICE" partyIdFrom="Netdava" partyId="ITPerspectives" statusId="INVOICE_PAID" invoiceDate="2020-09-30 09:33:56.000" dueDate="2020-10-15" currencyUomId="EUR"/>
+  <InvoiceItem invoiceId="2020-SERV-10-RO" invoiceItemSeqId="1" uomId="EUR" quantity="33.3333" amount="1000.0" description="Clustere Kubernetes documentatie și diagrama"/>
+  <Payment amount="4869.8" statusId="PMNT_RECEIVED" partyIdFrom="ITPerspectives" actualCurrencyAmount="23714.951530995313" currencyUomId="EUR" paymentId="2020-SERV-10-RO" actualCurrencyUomId="RON" partyIdTo="Netdava" paymentTypeId="CUSTOMER_PAYMENT"/>
+  <PaymentApplication paymentApplicationId="2020-SERV-10-RO" paymentId="2020-SERV-10-RO" invoiceId="2020-SERV-10-RO" amountApplied="23714.951530995313"/>
+  <Invoice invoiceId="2020-SERV-13-RO" invoiceTypeId="SALES_INVOICE" partyIdFrom="Netdava" partyId="ITPerspectives" statusId="INVOICE_PAID" invoiceDate="2020-11-30 18:28:12.000" dueDate="2020-12-14" currencyUomId="EUR"/>
+  <InvoiceItem invoiceId="2020-SERV-13-RO" invoiceItemSeqId="1" uomId="EUR" quantity="1.5" amount="45.0" description="Intervenție certificate cluster 2020-11-26"/>
+  <Payment amount="219.31" statusId="PMNT_RECEIVED" partyIdFrom="ITPerspectives" actualCurrencyAmount="1068.8072446573642" currencyUomId="EUR" paymentId="2020-SERV-13-RO" actualCurrencyUomId="RON" partyIdTo="Netdava" paymentTypeId="CUSTOMER_PAYMENT"/>
+  <PaymentApplication paymentApplicationId="2020-SERV-13-RO" paymentId="2020-SERV-13-RO" invoiceId="2020-SERV-13-RO" amountApplied="1068.8072446573642"/>
+  <Invoice invoiceId="2017-PS-2" invoiceTypeId="SALES_INVOICE" partyIdFrom="Netdava" partyId="VentivoCapital" statusId="INVOICE_PAID" invoiceDate="2017-12-28 19:48:27.000" dueDate="2017-12-19" currencyUomId="RON"/>
+  <InvoiceItem invoiceId="2017-PS-2" invoiceItemSeqId="1" uomId="RON" quantity="1.0" amount="4000.0" description="Training/consultață procese dezvoltare 11.2017"/>
+  <Payment amount="4000.0" statusId="PMNT_RECEIVED" partyIdFrom="VentivoCapital" actualCurrencyAmount="4000.0" currencyUomId="RON" paymentId="2017-PS-2" actualCurrencyUomId="RON" partyIdTo="Netdava" paymentTypeId="CUSTOMER_PAYMENT"/>
+  <PaymentApplication paymentApplicationId="2017-PS-2" paymentId="2017-PS-2" invoiceId="2017-PS-2" amountApplied="4000.0"/>
+  <Invoice invoiceId="2017-PS-3" invoiceTypeId="SALES_INVOICE" partyIdFrom="Netdava" partyId="VentivoCapital" statusId="INVOICE_PAID" invoiceDate="2018-01-01 19:02:06.000" dueDate="2018-01-11" currencyUomId="RON"/>
+  <InvoiceItem invoiceId="2017-PS-3" invoiceItemSeqId="1" uomId="RON" quantity="1.0" amount="4000.0" description="Automatizare procese de dezvoltare - infrastructură cloud 12.2017"/>
+  <Payment amount="4000.0" statusId="PMNT_RECEIVED" partyIdFrom="VentivoCapital" actualCurrencyAmount="4000.0" currencyUomId="RON" paymentId="2017-PS-3" actualCurrencyUomId="RON" partyIdTo="Netdava" paymentTypeId="CUSTOMER_PAYMENT"/>
+  <PaymentApplication paymentApplicationId="2017-PS-3" paymentId="2017-PS-3" invoiceId="2017-PS-3" amountApplied="4000.0"/>
+  <Invoice invoiceId="2017-PS-1" invoiceTypeId="SALES_INVOICE" partyIdFrom="Netdava" partyId="GpiSL" statusId="INVOICE_PAID" invoiceDate="2017-09-18 16:35:21.000" dueDate="2017-10-02" currencyUomId="EUR"/>
+  <InvoiceItem invoiceId="2017-PS-1" invoiceItemSeqId="1" uomId="EUR" quantity="1.0" amount="150.0" description="Great People Inside Cube - Spanish Version"/>
+  <Payment amount="150.0" statusId="PMNT_RECEIVED" partyIdFrom="GpiSL" actualCurrencyAmount="689.7000074386597" currencyUomId="EUR" paymentId="2017-PS-1" actualCurrencyUomId="EUR" partyIdTo="Netdava" paymentTypeId="CUSTOMER_PAYMENT"/>
+  <PaymentApplication paymentApplicationId="2017-PS-1" paymentId="2017-PS-1" invoiceId="2017-PS-1" amountApplied="689.7000074386597"/>
+  <Invoice invoiceId="2019-SERV-1" invoiceTypeId="SALES_INVOICE" partyIdFrom="Netdava" partyId="OneSoftware" statusId="INVOICE_PAID" invoiceDate="2019-07-01 22:51:42.000" dueDate="2019-07-15" currencyUomId="RON"/>
+  <InvoiceItem invoiceId="2019-SERV-1" invoiceItemSeqId="1" uomId="RON" quantity="1.0" amount="2382.0" description="Instalare și configurare sistem monitorizare aplicații"/>
+  <InvoiceItem invoiceId="2019-SERV-1" invoiceItemSeqId="2" uomId="RON" quantity="1.0" amount="1420.0" description="Instalare și configurare registru imagini Docker"/>
+  <Payment amount="3502.0" statusId="PMNT_RECEIVED" partyIdFrom="OneSoftware" actualCurrencyAmount="3502.0" currencyUomId="RON" paymentId="2019-SERV-1" actualCurrencyUomId="RON" partyIdTo="Netdava" paymentTypeId="CUSTOMER_PAYMENT"/>
+  <PaymentApplication paymentApplicationId="2019-SERV-1" paymentId="2019-SERV-1" invoiceId="2019-SERV-1" amountApplied="3502.0"/>
+  <Invoice invoiceId="2019-SERV-3" invoiceTypeId="SALES_INVOICE" partyIdFrom="Netdava" partyId="OneSoftware" statusId="INVOICE_PAID" invoiceDate="2019-12-30 13:34:01.000" dueDate="2020-01-13" currencyUomId="RON"/>
+  <InvoiceItem invoiceId="2019-SERV-3" invoiceItemSeqId="1" uomId="RON" quantity="1.0" amount="-300.0" description="Stornare Instalare și configurare sistem monitorizare aplicații"/>
+  <Payment amount="0.0" statusId="PMNT_RECEIVED" partyIdFrom="OneSoftware" actualCurrencyAmount="0.0" currencyUomId="RON" paymentId="2019-SERV-3" actualCurrencyUomId="RON" partyIdTo="Netdava" paymentTypeId="CUSTOMER_PAYMENT"/>
+  <PaymentApplication paymentApplicationId="2019-SERV-3" paymentId="2019-SERV-3" invoiceId="2019-SERV-3" amountApplied="0.0"/>
+  <Invoice invoiceId="2019-SERV-2" invoiceTypeId="SALES_INVOICE" partyIdFrom="Netdava" partyId="HappySteamCrew" statusId="INVOICE_PAID" invoiceDate="2019-08-06 12:19:59.000" dueDate="2019-08-20" currencyUomId="RON"/>
+  <InvoiceItem invoiceId="2019-SERV-2" invoiceItemSeqId="1" uomId="RON" quantity="1.0" amount="80.0" description="Design de logo și implementare în sit web calcatoriamobila.ro"/>
+  <Payment amount="80.0" statusId="PMNT_RECEIVED" partyIdFrom="HappySteamCrew" actualCurrencyAmount="80.0" currencyUomId="RON" paymentId="2019-SERV-2" actualCurrencyUomId="RON" partyIdTo="Netdava" paymentTypeId="CUSTOMER_PAYMENT"/>
+  <PaymentApplication paymentApplicationId="2019-SERV-2" paymentId="2019-SERV-2" invoiceId="2019-SERV-2" amountApplied="80.0"/>
+  <Invoice invoiceId="2018-N-EU-1" invoiceTypeId="SALES_INVOICE" partyIdFrom="Netdava" partyId="GpiPteLtd" statusId="INVOICE_PAID" invoiceDate="2018-03-28 15:56:54.000" dueDate="2018-04-11" currencyUomId="EUR"/>
+  <InvoiceItem invoiceId="2018-N-EU-1" invoiceItemSeqId="1" uomId="EUR" quantity="2.0" amount="9280.0" description="Gr8pi Development Jan-Feb 2018 "/>
+  <InvoiceItem invoiceId="2018-N-EU-1" invoiceItemSeqId="2" uomId="EUR" quantity="1.0" amount="-800.0" description="Promotional discount"/>
+  <Payment amount="8480.0" statusId="PMNT_RECEIVED" partyIdFrom="GpiPteLtd" actualCurrencyAmount="39433.695068359375" currencyUomId="EUR" paymentId="2018-N-EU-1" actualCurrencyUomId="EUR" partyIdTo="Netdava" paymentTypeId="CUSTOMER_PAYMENT"/>
+  <PaymentApplication paymentApplicationId="2018-N-EU-1" paymentId="2018-N-EU-1" invoiceId="2018-N-EU-1" amountApplied="39433.695068359375"/>
+  <Invoice invoiceId="2018-N-EU-2" invoiceTypeId="SALES_INVOICE" partyIdFrom="Netdava" partyId="GpiPteLtd" statusId="INVOICE_PAID" invoiceDate="2018-12-17 00:14:45.000" dueDate="2018-12-24" currencyUomId="EUR"/>
+  <InvoiceItem invoiceId="2018-N-EU-2" invoiceItemSeqId="1" uomId="EUR" quantity="5.0" amount="23200.0" description="Gr8pi consultancy and development"/>
+  <Payment amount="826.0" statusId="PMNT_RECEIVED" partyIdFrom="GpiPteLtd" actualCurrencyAmount="826.0" currencyUomId="EUR" paymentId="2018-N-EU-2" actualCurrencyUomId="EUR" partyIdTo="Netdava" paymentTypeId="CUSTOMER_PAYMENT"/>
+  <PaymentApplication paymentApplicationId="2018-N-EU-2" paymentId="2018-N-EU-2" invoiceId="2018-N-EU-2" amountApplied="826.0"/>
+  <Invoice invoiceId="2019-N-EU-1" invoiceTypeId="SALES_INVOICE" partyIdFrom="Netdava" partyId="GpiPteLtd" statusId="INVOICE_PAID" invoiceDate="2019-02-15 15:45:03.000" dueDate="2019-03-01" currencyUomId="EUR"/>
+  <InvoiceItem invoiceId="2019-N-EU-1" invoiceItemSeqId="1" uomId="EUR" quantity="1.0" amount="4640.0" description="Great People Inside IT services jan 2019"/>
+  <Payment amount="4640.0" statusId="PMNT_RECEIVED" partyIdFrom="GpiPteLtd" actualCurrencyAmount="22017.264099121094" currencyUomId="EUR" paymentId="2019-N-EU-1" actualCurrencyUomId="EUR" partyIdTo="Netdava" paymentTypeId="CUSTOMER_PAYMENT"/>
+  <PaymentApplication paymentApplicationId="2019-N-EU-1" paymentId="2019-N-EU-1" invoiceId="2019-N-EU-1" amountApplied="22017.264099121094"/>
+  <Invoice invoiceId="2019-N-EU-2" invoiceTypeId="SALES_INVOICE" partyIdFrom="Netdava" partyId="GpiPteLtd" statusId="INVOICE_PAID" invoiceDate="2019-03-11 15:51:15.000" dueDate="2019-03-25" currencyUomId="EUR"/>
+  <InvoiceItem invoiceId="2019-N-EU-2" invoiceItemSeqId="1" uomId="EUR" quantity="1.0" amount="4640.0" description="Great People Inside IT services feb 2019"/>
+  <Payment amount="4640.0" statusId="PMNT_RECEIVED" partyIdFrom="GpiPteLtd" actualCurrencyAmount="21998.240814208984" currencyUomId="EUR" paymentId="2019-N-EU-2" actualCurrencyUomId="EUR" partyIdTo="Netdava" paymentTypeId="CUSTOMER_PAYMENT"/>
+  <PaymentApplication paymentApplicationId="2019-N-EU-2" paymentId="2019-N-EU-2" invoiceId="2019-N-EU-2" amountApplied="21998.240814208984"/>
+  <Invoice invoiceId="2019-N-EU-3" invoiceTypeId="SALES_INVOICE" partyIdFrom="Netdava" partyId="GpiPteLtd" statusId="INVOICE_PAID" invoiceDate="2019-04-05 13:54:32.000" dueDate="2019-04-19" currencyUomId="EUR"/>
+  <InvoiceItem invoiceId="2019-N-EU-3" invoiceItemSeqId="1" uomId="EUR" quantity="1.0" amount="4640.0" description="Great People Inside IT services march 2019"/>
+  <Payment amount="4640.0" statusId="PMNT_RECEIVED" partyIdFrom="GpiPteLtd" actualCurrencyAmount="4640.0" currencyUomId="EUR" paymentId="2019-N-EU-3" actualCurrencyUomId="EUR" partyIdTo="Netdava" paymentTypeId="CUSTOMER_PAYMENT"/>
+  <PaymentApplication paymentApplicationId="2019-N-EU-3" paymentId="2019-N-EU-3" invoiceId="2019-N-EU-3" amountApplied="4640.0"/>
+  <Invoice invoiceId="2019-N-EU-4" invoiceTypeId="SALES_INVOICE" partyIdFrom="Netdava" partyId="GpiPteLtd" statusId="INVOICE_PAID" invoiceDate="2019-05-14 17:32:16.000" dueDate="2019-05-28" currencyUomId="EUR"/>
+  <InvoiceItem invoiceId="2019-N-EU-4" invoiceItemSeqId="1" uomId="EUR" quantity="1.0" amount="4640.0" description="Great People Inside IT services april 2019"/>
+  <Payment amount="4640.0" statusId="PMNT_RECEIVED" partyIdFrom="GpiPteLtd" actualCurrencyAmount="4640.0" currencyUomId="EUR" paymentId="2019-N-EU-4" actualCurrencyUomId="EUR" partyIdTo="Netdava" paymentTypeId="CUSTOMER_PAYMENT"/>
+  <PaymentApplication paymentApplicationId="2019-N-EU-4" paymentId="2019-N-EU-4" invoiceId="2019-N-EU-4" amountApplied="4640.0"/>
+  <Invoice invoiceId="2019-N-EU-5" invoiceTypeId="SALES_INVOICE" partyIdFrom="Netdava" partyId="GpiPteLtd" statusId="INVOICE_PAID" invoiceDate="2019-06-11 16:32:17.000" dueDate="2019-06-25" currencyUomId="EUR"/>
+  <InvoiceItem invoiceId="2019-N-EU-5" invoiceItemSeqId="1" uomId="EUR" quantity="1.0" amount="4640.0" description="Gr8pi platform development- Sprint 29 - Authorization and Comparative Report "/>
+  <Payment amount="4640.0" statusId="PMNT_RECEIVED" partyIdFrom="GpiPteLtd" actualCurrencyAmount="4640.0" currencyUomId="EUR" paymentId="2019-N-EU-5" actualCurrencyUomId="EUR" partyIdTo="Netdava" paymentTypeId="CUSTOMER_PAYMENT"/>
+  <PaymentApplication paymentApplicationId="2019-N-EU-5" paymentId="2019-N-EU-5" invoiceId="2019-N-EU-5" amountApplied="4640.0"/>
+  <Invoice invoiceId="2019-N-EU-6" invoiceTypeId="SALES_INVOICE" partyIdFrom="Netdava" partyId="GpiPteLtd" statusId="INVOICE_PAID" invoiceDate="2019-07-09 15:29:34.000" dueDate="2019-07-23" currencyUomId="EUR"/>
+  <InvoiceItem invoiceId="2019-N-EU-6" invoiceItemSeqId="1" uomId="EUR" quantity="1.0" amount="4640.0" description="Great People Inside Platform Sprint 29 - June "/>
+  <Payment amount="4640.0" statusId="PMNT_RECEIVED" partyIdFrom="GpiPteLtd" actualCurrencyAmount="4640.0" currencyUomId="EUR" paymentId="2019-N-EU-6" actualCurrencyUomId="EUR" partyIdTo="Netdava" paymentTypeId="CUSTOMER_PAYMENT"/>
+  <PaymentApplication paymentApplicationId="2019-N-EU-6" paymentId="2019-N-EU-6" invoiceId="2019-N-EU-6" amountApplied="4640.0"/>
+  <Invoice invoiceId="2019-N-EU-7" invoiceTypeId="SALES_INVOICE" partyIdFrom="Netdava" partyId="GpiPteLtd" statusId="INVOICE_PAID" invoiceDate="2019-08-23 11:13:35.000" dueDate="2019-09-02" currencyUomId="EUR"/>
+  <InvoiceItem invoiceId="2019-N-EU-7" invoiceItemSeqId="1" uomId="EUR" quantity="1.0" amount="4640.0" description="Great People Inside Platform Sprint RJ1-1-3 -July"/>
+  <Payment amount="4640.0" statusId="PMNT_RECEIVED" partyIdFrom="GpiPteLtd" actualCurrencyAmount="4640.0" currencyUomId="EUR" paymentId="2019-N-EU-7" actualCurrencyUomId="EUR" partyIdTo="Netdava" paymentTypeId="CUSTOMER_PAYMENT"/>
+  <PaymentApplication paymentApplicationId="2019-N-EU-7" paymentId="2019-N-EU-7" invoiceId="2019-N-EU-7" amountApplied="4640.0"/>
+  <Invoice invoiceId="2019-N-EU-8" invoiceTypeId="SALES_INVOICE" partyIdFrom="Netdava" partyId="GpiPteLtd" statusId="INVOICE_PAID" invoiceDate="2019-09-09 12:26:41.000" dueDate="2019-09-19" currencyUomId="EUR"/>
+  <InvoiceItem invoiceId="2019-N-EU-8" invoiceItemSeqId="1" uomId="EUR" quantity="1.0" amount="4640.0" description="Great People Inside Platform Sprint RJ1-2-4"/>
+  <Payment amount="4640.0" statusId="PMNT_RECEIVED" partyIdFrom="GpiPteLtd" actualCurrencyAmount="4640.0" currencyUomId="EUR" paymentId="2019-N-EU-8" actualCurrencyUomId="EUR" partyIdTo="Netdava" paymentTypeId="CUSTOMER_PAYMENT"/>
+  <PaymentApplication paymentApplicationId="2019-N-EU-8" paymentId="2019-N-EU-8" invoiceId="2019-N-EU-8" amountApplied="4640.0"/>
+  <Invoice invoiceId="2019-N-EU-9" invoiceTypeId="SALES_INVOICE" partyIdFrom="Netdava" partyId="GpiPteLtd" statusId="INVOICE_PAID" invoiceDate="2019-10-06 10:58:09.000" dueDate="2019-10-20" currencyUomId="EUR"/>
+  <InvoiceItem invoiceId="2019-N-EU-9" invoiceItemSeqId="1" uomId="EUR" quantity="1.0" amount="4640.0" description="Great People Inside Platform Sept. Sprint RJ1-5-8- Release preparations "/>
+  <Payment amount="4640.0" statusId="PMNT_RECEIVED" partyIdFrom="GpiPteLtd" actualCurrencyAmount="2.15296E7" currencyUomId="EUR" paymentId="2019-N-EU-9" actualCurrencyUomId="EUR" partyIdTo="Netdava" paymentTypeId="CUSTOMER_PAYMENT"/>
+  <PaymentApplication paymentApplicationId="2019-N-EU-9" paymentId="2019-N-EU-9" invoiceId="2019-N-EU-9" amountApplied="2.15296E7"/>
+  <Invoice invoiceId="2019-N-EU-10" invoiceTypeId="SALES_INVOICE" partyIdFrom="Netdava" partyId="GpiPteLtd" statusId="INVOICE_PAID" invoiceDate="2019-11-11 19:21:53.000" dueDate="2019-11-25" currencyUomId="EUR"/>
+  <InvoiceItem invoiceId="2019-N-EU-10" invoiceItemSeqId="1" uomId="EUR" quantity="1.0" amount="1200.0" description="Gr8pi IT consultancy services october 2019"/>
+  <InvoiceItem invoiceId="2019-N-EU-10" invoiceItemSeqId="2" uomId="EUR" quantity="1.0" amount="720.0" description="Gr8pi Operations and maintenance october 2019"/>
+  <InvoiceItem invoiceId="2019-N-EU-10" invoiceItemSeqId="3" uomId="EUR" quantity="1.0" amount="2720.0" description="Gr8pi Platfrom development october 2019"/>
+  <Payment amount="4640.0" statusId="PMNT_RECEIVED" partyIdFrom="GpiPteLtd" actualCurrencyAmount="4640.0" currencyUomId="EUR" paymentId="2019-N-EU-10" actualCurrencyUomId="EUR" partyIdTo="Netdava" paymentTypeId="CUSTOMER_PAYMENT"/>
+  <PaymentApplication paymentApplicationId="2019-N-EU-10" paymentId="2019-N-EU-10" invoiceId="2019-N-EU-10" amountApplied="4640.0"/>
+  <Invoice invoiceId="2019-N-EU-11" invoiceTypeId="SALES_INVOICE" partyIdFrom="Netdava" partyId="GpiPteLtd" statusId="INVOICE_PAID" invoiceDate="2019-12-05 16:30:29.000" dueDate="2019-12-19" currencyUomId="EUR"/>
+  <InvoiceItem invoiceId="2019-N-EU-11" invoiceItemSeqId="1" uomId="EUR" quantity="1.0" amount="1200.0" description="Gr8pi IT consultancy services"/>
+  <InvoiceItem invoiceId="2019-N-EU-11" invoiceItemSeqId="2" uomId="EUR" quantity="1.0" amount="720.0" description="Gr8pi Operations and maintenance"/>
+  <InvoiceItem invoiceId="2019-N-EU-11" invoiceItemSeqId="3" uomId="EUR" quantity="1.0" amount="2720.0" description="Gr8pi Platfrom development"/>
+  <Payment amount="4640.0" statusId="PMNT_RECEIVED" partyIdFrom="GpiPteLtd" actualCurrencyAmount="4640.0" currencyUomId="EUR" paymentId="2019-N-EU-11" actualCurrencyUomId="EUR" partyIdTo="Netdava" paymentTypeId="CUSTOMER_PAYMENT"/>
+  <PaymentApplication paymentApplicationId="2019-N-EU-11" paymentId="2019-N-EU-11" invoiceId="2019-N-EU-11" amountApplied="4640.0"/>
+  <Invoice invoiceId="2019-N-EU-12" invoiceTypeId="SALES_INVOICE" partyIdFrom="Netdava" partyId="GpiPteLtd" statusId="INVOICE_PAID" invoiceDate="2019-12-24 12:33:24.000" dueDate="2020-01-13" currencyUomId="EUR"/>
+  <InvoiceItem invoiceId="2019-N-EU-12" invoiceItemSeqId="1" uomId="EUR" quantity="1.0" amount="1200.0" description="Gr8pi IT consultancy services"/>
+  <InvoiceItem invoiceId="2019-N-EU-12" invoiceItemSeqId="2" uomId="EUR" quantity="1.0" amount="720.0" description="Gr8pi Operations and maintenance"/>
+  <InvoiceItem invoiceId="2019-N-EU-12" invoiceItemSeqId="3" uomId="EUR" quantity="1.0" amount="2720.0" description="Gr8pi Platfrom development"/>
+  <Payment amount="4640.0" statusId="PMNT_RECEIVED" partyIdFrom="GpiPteLtd" actualCurrencyAmount="4640.0" currencyUomId="EUR" paymentId="2019-N-EU-12" actualCurrencyUomId="EUR" partyIdTo="Netdava" paymentTypeId="CUSTOMER_PAYMENT"/>
+  <PaymentApplication paymentApplicationId="2019-N-EU-12" paymentId="2019-N-EU-12" invoiceId="2019-N-EU-12" amountApplied="4640.0"/>
+  <Invoice invoiceId="2020-SERV-3-RO" invoiceTypeId="SALES_INVOICE" partyIdFrom="Netdava" partyId="GpiPteLtd" statusId="INVOICE_PAID" invoiceDate="2020-03-31 14:56:35.000" dueDate="2020-04-14" currencyUomId="EUR"/>
+  <InvoiceItem invoiceId="2020-SERV-3-RO" invoiceItemSeqId="1" uomId="EUR" quantity="1.0" amount="720.0" description="Gr8pi - Operațiuni și mentenanță"/>
+  <InvoiceItem invoiceId="2020-SERV-3-RO" invoiceItemSeqId="2" uomId="EUR" quantity="1.0" amount="1200.0" description="Gr8pi - Servicii consultanță IT "/>
+  <InvoiceItem invoiceId="2020-SERV-3-RO" invoiceItemSeqId="3" uomId="EUR" quantity="1.0" amount="2720.0" description="Gr8pi Dezvoltare platformă"/>
+  <Payment amount="22409.8" statusId="PMNT_RECEIVED" partyIdFrom="GpiPteLtd" actualCurrencyAmount="108232.61467932723" currencyUomId="EUR" paymentId="2020-SERV-3-RO" actualCurrencyUomId="EUR" partyIdTo="Netdava" paymentTypeId="CUSTOMER_PAYMENT"/>
+  <PaymentApplication paymentApplicationId="2020-SERV-3-RO" paymentId="2020-SERV-3-RO" invoiceId="2020-SERV-3-RO" amountApplied="108232.61467932723"/>
+  <Invoice invoiceId="2020-SERV-11-RO" invoiceTypeId="SALES_INVOICE" partyIdFrom="Netdava" partyId="VentivoItSolutions" statusId="INVOICE_PAID" invoiceDate="2020-11-06 15:26:25.000" dueDate="2020-11-13" currencyUomId="EUR"/>
+  <InvoiceItem invoiceId="2020-SERV-11-RO" invoiceItemSeqId="1" uomId="EUR" quantity="74.45" amount="1861.25" description="Consultanța Libris - faza 1"/>
+  <Payment amount="9073.04" statusId="PMNT_RECEIVED" partyIdFrom="VentivoItSolutions" actualCurrencyAmount="44228.34890833637" currencyUomId="EUR" paymentId="2020-SERV-11-RO" actualCurrencyUomId="RON" partyIdTo="Netdava" paymentTypeId="CUSTOMER_PAYMENT"/>
+  <PaymentApplication paymentApplicationId="2020-SERV-11-RO" paymentId="2020-SERV-11-RO" invoiceId="2020-SERV-11-RO" amountApplied="44228.34890833637"/>
+  <Invoice invoiceId="2020-SERV-14-RO" invoiceTypeId="SALES_INVOICE" partyIdFrom="Netdava" partyId="VentivoItSolutions" statusId="INVOICE_PAID" invoiceDate="2020-11-30 18:40:53.000" dueDate="2020-12-14" currencyUomId="EUR"/>
+  <InvoiceItem invoiceId="2020-SERV-14-RO" invoiceItemSeqId="1" uomId="EUR" quantity="142.6" amount="3565.0" description="Consultanță Libris - faza 2 Kubernetes"/>
+  <Payment amount="17374.03" statusId="PMNT_RECEIVED" partyIdFrom="VentivoItSolutions" actualCurrencyAmount="84672.3295249138" currencyUomId="EUR" paymentId="2020-SERV-14-RO" actualCurrencyUomId="RON" partyIdTo="Netdava" paymentTypeId="CUSTOMER_PAYMENT"/>
+  <PaymentApplication paymentApplicationId="2020-SERV-14-RO" paymentId="2020-SERV-14-RO" invoiceId="2020-SERV-14-RO" amountApplied="84672.3295249138"/>
+  <Invoice invoiceId="2020-SERV-16-RO" invoiceTypeId="SALES_INVOICE" partyIdFrom="Netdava" partyId="VentivoItSolutions" statusId="INVOICE_IN_PROCESS" invoiceDate="2021-01-04 01:07:15.000" dueDate="2021-03-01" currencyUomId="EUR"/>
+  <InvoiceItem invoiceId="2020-SERV-16-RO" invoiceItemSeqId="1" uomId="EUR" quantity="58.87" amount="1471.75" description="Curățenie cod, jetty 5, maven"/>
+  <InvoiceItem invoiceId="2020-SERV-16-RO" invoiceItemSeqId="2" uomId="EUR" quantity="160.0" amount="4000.0" description="Refactorizare 1M"/>
+  <Payment amount="7173.9" statusId="PMNT_RECEIVED" partyIdFrom="VentivoItSolutions" actualCurrencyAmount="34968.458680116106" currencyUomId="EUR" paymentId="2020-SERV-16-RO" actualCurrencyUomId="RON" partyIdTo="Netdava" paymentTypeId="CUSTOMER_PAYMENT"/>
+  <PaymentApplication paymentApplicationId="2020-SERV-16-RO" paymentId="2020-SERV-16-RO" invoiceId="2020-SERV-16-RO" amountApplied="34968.458680116106"/>
+  <Invoice invoiceId="2016-PS-1" invoiceTypeId="SALES_INVOICE" partyIdFrom="Netdava" partyId="RossmayInt" statusId="INVOICE_PAID" invoiceDate="2016-06-02 10:12:13.000" dueDate="2016-06-16" currencyUomId="EUR"/>
+  <InvoiceItem invoiceId="2016-PS-1" invoiceItemSeqId="1" uomId="EUR" quantity="1.0" amount="158.01099300384521" description="Prestari servicii IT"/>
+  <Payment amount="35.0" statusId="PMNT_RECEIVED" partyIdFrom="RossmayInt" actualCurrencyAmount="158.01099300384521" currencyUomId="EUR" paymentId="2016-PS-1" actualCurrencyUomId="RON" partyIdTo="Netdava" paymentTypeId="CUSTOMER_PAYMENT"/>
+  <PaymentApplication paymentApplicationId="2016-PS-1" paymentId="2016-PS-1" invoiceId="2016-PS-1" amountApplied="158.01099300384521"/>
 
-<!-- <PartyRole partyId="Robomarketing" roleType="CUSTOMER"/> -->
-  <!-- <PartyRole partyId="ITPerspectives" roleType="CUSTOMER"/>
-  <PartyRole partyId="VentivoCapital" roleType="CUSTOMER"/>
-  <PartyRole partyId="GpiSL" roleType="CUSTOMER"/>
-  <PartyRole partyId="OneSoftware" roleType="CUSTOMER"/>
-  <PartyRole partyId="HappySteamCrew" roleType="CUSTOMER"/>
-  <PartyRole partyId="GpiPteLtd" roleType="CUSTOMER"/>
-  <PartyRole partyId="VentivoItSolutions" roleType="CUSTOMER"/>
-  <PartyRole partyId="RossmayInt" roleType="CUSTOMER"/> -->
-  <ContactMech contactMechId="PA505195" contactMechTypeId="POSTAL_ADDRESS"/>
-  <PostalAddress contactMechId="PA505195" toName="Robomarketing S.R.L." address1="Str. Sloboziei, 16, -" address2="" city="Călărași" postalCode="910014" iso="ROU"/>
-  <PartyContactMech partyId="Robomarketing" contactMechId="PA505195" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
-  <PartyContactMechPurpose partyId="Robomarketing" contactMechId="PA505195" contactMechPurposeTypeId="PRIMARY_LOCATION" fromDate="2021-01-01 00:00:00.0"/>
-  <ContactMech contactMechId="PA491820" contactMechTypeId="POSTAL_ADDRESS"/>
-  <PostalAddress contactMechId="PA491820" toName="I.T. Perspectives S.R.L." address1="Str. G-ral Ion Dragalina, 1, -" address2="" city="Sibiu" postalCode="550076" iso="ROU"/>
-  <PartyContactMech partyId="ITPerspectives" contactMechId="PA491820" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
-  <PartyContactMechPurpose partyId="ITPerspectives" contactMechId="PA491820" contactMechPurposeTypeId="PRIMARY_LOCATION" fromDate="2021-01-01 00:00:00.0"/>
-  <ContactMech contactMechId="PA325933" contactMechTypeId="POSTAL_ADDRESS"/>
-  <PostalAddress contactMechId="PA325933" toName="Ventivo Capital S.R.L." address1="Șos. Pantelimon, 126, București" address2="" city="Sect 2" postalCode="21643" iso="ROU"/>
-  <PartyContactMech partyId="VentivoCapital" contactMechId="PA325933" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
-  <PartyContactMechPurpose partyId="VentivoCapital" contactMechId="PA325933" contactMechPurposeTypeId="PRIMARY_LOCATION" fromDate="2021-01-01 00:00:00.0"/>
-  <ContactMech contactMechId="PA303406" contactMechTypeId="POSTAL_ADDRESS"/>
-  <PostalAddress contactMechId="PA303406" toName="Great People Inside S.L" address1="Avenida de Europa 14. " address2="28108-Alcobendas" city="Madrid" postalCode="28108" iso="ESP"/>
-  <PartyContactMech partyId="GpiSL" contactMechId="PA303406" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
-  <PartyContactMechPurpose partyId="GpiSL" contactMechId="PA303406" contactMechPurposeTypeId="PRIMARY_LOCATION" fromDate="2021-01-01 00:00:00.0"/>
-  <ContactMech contactMechId="PA440108" contactMechTypeId="POSTAL_ADDRESS"/>
-  <PostalAddress contactMechId="PA440108" toName="One Software S.R.L." address1="Str. Spitalului, 7, Locuin?a C1" address2="" city="Ploiești" postalCode="100144" iso="ROU"/>
-  <PartyContactMech partyId="OneSoftware" contactMechId="PA440108" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
-  <PartyContactMechPurpose partyId="OneSoftware" contactMechId="PA440108" contactMechPurposeTypeId="PRIMARY_LOCATION" fromDate="2021-01-01 00:00:00.0"/>
-  <ContactMech contactMechId="PA447781" contactMechTypeId="POSTAL_ADDRESS"/>
-  <PostalAddress contactMechId="PA447781" toName="Happy Steam Crew S.R.L." address1="Str. Mihai Viteazul, 430, -" address2="" city="Valea Nicovani" postalCode="107632" iso="ROU"/>
-  <PartyContactMech partyId="HappySteamCrew" contactMechId="PA447781" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
-  <PartyContactMechPurpose partyId="HappySteamCrew" contactMechId="PA447781" contactMechPurposeTypeId="PRIMARY_LOCATION" fromDate="2021-01-01 00:00:00.0"/>
-  <ContactMech contactMechId="PA342940" contactMechTypeId="POSTAL_ADDRESS"/>
-  <PostalAddress contactMechId="PA342940" toName="Great People Inside Pte Ltd" address1="160 Robinson Road" address2="#14-04 Singapore Business Federation  Centre" city="Singapore" postalCode="068914" iso="SGP"/>
-  <PartyContactMech partyId="GpiPteLtd" contactMechId="PA342940" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
-  <PartyContactMechPurpose partyId="GpiPteLtd" contactMechId="PA342940" contactMechPurposeTypeId="PRIMARY_LOCATION" fromDate="2021-01-01 00:00:00.0"/>
-  <ContactMech contactMechId="PA548513" contactMechTypeId="POSTAL_ADDRESS"/>
-  <PostalAddress contactMechId="PA548513" toName="Ventivo It Solutions S.R.L." address1="Str. Mihai Viteazul, 24-26, Ap:13, Mansardă 1 + Mansardă 2" address2="" city="Brașov" postalCode="" iso="ROU"/>
-  <PartyContactMech partyId="VentivoItSolutions" contactMechId="PA548513" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
-  <PartyContactMechPurpose partyId="VentivoItSolutions" contactMechId="PA548513" contactMechPurposeTypeId="PRIMARY_LOCATION" fromDate="2021-01-01 00:00:00.0"/>
-  <ContactMech contactMechId="PA213863" contactMechTypeId="POSTAL_ADDRESS"/>
-  <PostalAddress contactMechId="PA213863" toName="Rossmay International S.R.L." address1="Str. Ion Câmpineanu, 11, București" address2="" city="Sect 1" postalCode="10031" iso="ROU"/>
-  <PartyContactMech partyId="RossmayInt" contactMechId="PA213863" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
-  <PartyContactMechPurpose partyId="RossmayInt" contactMechId="PA213863" contactMechPurposeTypeId="PRIMARY_LOCATION" fromDate="2021-01-01 00:00:00.0"/>
-  <ContactMech contactMechId="CE505195" contactMechTypeId="EMAIL_ADDRESS" infoString="office@robomarketing.ro"/>
-  <ContactMechType contactMechTypeId="EMAIL_ADDRESS" description="Email Address"/>
-  <PartyContactMech partyId="Robomarketing" contactMechId="CE505195" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
-  <PartyContactMechPurpose partyId="Robomarketing" contactMechId="CE505195" contactMechPurposeTypeId="PRIMARY_EMAIL" fromDate="2021-01-01 00:00:00.0"/>
-  <ContactMech contactMechId="CE491820" contactMechTypeId="EMAIL_ADDRESS" infoString="radu.secosan@itperspectives.ro"/>
-  <ContactMechType contactMechTypeId="EMAIL_ADDRESS" description="Email Address"/>
-  <PartyContactMech partyId="ITPerspectives" contactMechId="CE491820" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
-  <PartyContactMechPurpose partyId="ITPerspectives" contactMechId="CE491820" contactMechPurposeTypeId="PRIMARY_EMAIL" fromDate="2021-01-01 00:00:00.0"/>
-  <ContactMech contactMechId="CE325933" contactMechTypeId="EMAIL_ADDRESS" infoString="office@ventivogroup.com"/>
-  <ContactMechType contactMechTypeId="EMAIL_ADDRESS" description="Email Address"/>
-  <PartyContactMech partyId="VentivoCapital" contactMechId="CE325933" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
-  <PartyContactMechPurpose partyId="VentivoCapital" contactMechId="CE325933" contactMechPurposeTypeId="PRIMARY_EMAIL" fromDate="2021-01-01 00:00:00.0"/>
-  <ContactMech contactMechId="CE303406" contactMechTypeId="EMAIL_ADDRESS" infoString="pablo.fernandez@greatpeopleinside.es"/>
-  <ContactMechType contactMechTypeId="EMAIL_ADDRESS" description="Email Address"/>
-  <PartyContactMech partyId="GpiSL" contactMechId="CE303406" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
-  <PartyContactMechPurpose partyId="GpiSL" contactMechId="CE303406" contactMechPurposeTypeId="PRIMARY_EMAIL" fromDate="2021-01-01 00:00:00.0"/>
-  <ContactMech contactMechId="CE440108" contactMechTypeId="EMAIL_ADDRESS" infoString="vlad@onesoftware.ro"/>
-  <ContactMechType contactMechTypeId="EMAIL_ADDRESS" description="Email Address"/>
-  <PartyContactMech partyId="OneSoftware" contactMechId="CE440108" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
-  <PartyContactMechPurpose partyId="OneSoftware" contactMechId="CE440108" contactMechPurposeTypeId="PRIMARY_EMAIL" fromDate="2021-01-01 00:00:00.0"/>
-  <ContactMech contactMechId="CE447781" contactMechTypeId="EMAIL_ADDRESS" infoString="office@calcatoriamobila.ro"/>
-  <ContactMechType contactMechTypeId="EMAIL_ADDRESS" description="Email Address"/>
-  <PartyContactMech partyId="HappySteamCrew" contactMechId="CE447781" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
-  <PartyContactMechPurpose partyId="HappySteamCrew" contactMechId="CE447781" contactMechPurposeTypeId="PRIMARY_EMAIL" fromDate="2021-01-01 00:00:00.0"/>
-  <ContactMech contactMechId="CE342940" contactMechTypeId="EMAIL_ADDRESS" infoString="contact@greatpeopleinside.com"/>
-  <ContactMechType contactMechTypeId="EMAIL_ADDRESS" description="Email Address"/>
-  <PartyContactMech partyId="GpiPteLtd" contactMechId="CE342940" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
-  <PartyContactMechPurpose partyId="GpiPteLtd" contactMechId="CE342940" contactMechPurposeTypeId="PRIMARY_EMAIL" fromDate="2021-01-01 00:00:00.0"/>
-  <ContactMech contactMechId="CE548513" contactMechTypeId="EMAIL_ADDRESS" infoString="ruxandra@ventivogroup.com"/>
-  <ContactMechType contactMechTypeId="EMAIL_ADDRESS" description="Email Address"/>
-  <PartyContactMech partyId="VentivoItSolutions" contactMechId="CE548513" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
-  <PartyContactMechPurpose partyId="VentivoItSolutions" contactMechId="CE548513" contactMechPurposeTypeId="PRIMARY_EMAIL" fromDate="2021-01-01 00:00:00.0"/>
-  <ContactMech contactMechId="CE213863" contactMechTypeId="EMAIL_ADDRESS" infoString="printquickdesign@yahoo.com"/>
-  <ContactMechType contactMechTypeId="EMAIL_ADDRESS" description="Email Address"/>
-  <PartyContactMech partyId="RossmayInt" contactMechId="CE213863" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
-  <PartyContactMechPurpose partyId="RossmayInt" contactMechId="CE213863" contactMechPurposeTypeId="PRIMARY_EMAIL" fromDate="2021-01-01 00:00:00.0"/>
-  <ContactMech contactMechId="WEB505195" contactMechTypeId="WEB_ADDRESS" infoString="https://www.robomarketing.ro"/>
-  <ContactMechType contactMechTypeId="WEB_ADDRESS" description="Website Address"/>
-  <PartyContactMech partyId="Robomarketing" contactMechId="WEB505195" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
-  <PartyContactMechPurpose partyId="Robomarketing" contactMechId="WEB505195" contactMechPurposeTypeId="PRIMARY_WEB_URL" fromDate="2021-01-01 00:00:00.0"/>
-  <ContactMech contactMechId="WEB491820" contactMechTypeId="WEB_ADDRESS" infoString="https://www.itperspectives.ro/"/>
-  <ContactMechType contactMechTypeId="WEB_ADDRESS" description="Website Address"/>
-  <PartyContactMech partyId="ITPerspectives" contactMechId="WEB491820" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
-  <PartyContactMechPurpose partyId="ITPerspectives" contactMechId="WEB491820" contactMechPurposeTypeId="PRIMARY_WEB_URL" fromDate="2021-01-01 00:00:00.0"/>
-  <ContactMech contactMechId="WEB325933" contactMechTypeId="WEB_ADDRESS" infoString="https://ventivogroup.com/"/>
-  <ContactMechType contactMechTypeId="WEB_ADDRESS" description="Website Address"/>
-  <PartyContactMech partyId="VentivoCapital" contactMechId="WEB325933" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
-  <PartyContactMechPurpose partyId="VentivoCapital" contactMechId="WEB325933" contactMechPurposeTypeId="PRIMARY_WEB_URL" fromDate="2021-01-01 00:00:00.0"/>
-  <ContactMech contactMechId="WEB440108" contactMechTypeId="WEB_ADDRESS" infoString="onesoftware.ro"/>
-  <ContactMechType contactMechTypeId="WEB_ADDRESS" description="Website Address"/>
-  <PartyContactMech partyId="OneSoftware" contactMechId="WEB440108" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
-  <PartyContactMechPurpose partyId="OneSoftware" contactMechId="WEB440108" contactMechPurposeTypeId="PRIMARY_WEB_URL" fromDate="2021-01-01 00:00:00.0"/>
-  <ContactMech contactMechId="WEB447781" contactMechTypeId="WEB_ADDRESS" infoString="https://calcatoriamobila.ro/"/>
-  <ContactMechType contactMechTypeId="WEB_ADDRESS" description="Website Address"/>
-  <PartyContactMech partyId="HappySteamCrew" contactMechId="WEB447781" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
-  <PartyContactMechPurpose partyId="HappySteamCrew" contactMechId="WEB447781" contactMechPurposeTypeId="PRIMARY_WEB_URL" fromDate="2021-01-01 00:00:00.0"/>
-  <ContactMech contactMechId="WEB342940" contactMechTypeId="WEB_ADDRESS" infoString="greatpeopleinside.com"/>
-  <ContactMechType contactMechTypeId="WEB_ADDRESS" description="Website Address"/>
-  <PartyContactMech partyId="GpiPteLtd" contactMechId="WEB342940" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
-  <PartyContactMechPurpose partyId="GpiPteLtd" contactMechId="WEB342940" contactMechPurposeTypeId="PRIMARY_WEB_URL" fromDate="2021-01-01 00:00:00.0"/>
-  <ContactMech contactMechId="WEB548513" contactMechTypeId="WEB_ADDRESS" infoString="https://ventivogroup.com"/>
-  <ContactMechType contactMechTypeId="WEB_ADDRESS" description="Website Address"/>
-  <PartyContactMech partyId="VentivoItSolutions" contactMechId="WEB548513" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
-  <PartyContactMechPurpose partyId="VentivoItSolutions" contactMechId="WEB548513" contactMechPurposeTypeId="PRIMARY_WEB_URL" fromDate="2021-01-01 00:00:00.0"/>
-  <ContactMech contactMechId="PHONE505195" contactMechTypeId="TELECOM_NUMBER" infoString="0775341146"/>
-  <ContactMechType contactMechTypeId="TELECOM_NUMBER" description="Telephone Number"/>
-  <TelecomNumber contactMechId="PHONE505195" countryCode="40" contactNumber="0775341146"/>
-  <PartyContactMech partyId="Robomarketing" contactMechId="PHONE505195" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
-  <PartyContactMechPurpose partyId="Robomarketing" contactMechId="PHONE505195" contactMechPurposeTypeId="PHONE_MOBILE" fromDate="2021-01-01 00:00:00.0"/>
-  <ContactMech contactMechId="PHONE491820" contactMechTypeId="TELECOM_NUMBER" infoString="0369401424"/>
-  <ContactMechType contactMechTypeId="TELECOM_NUMBER" description="Telephone Number"/>
-  <TelecomNumber contactMechId="PHONE491820" countryCode="40" contactNumber="0369401424"/>
-  <PartyContactMech partyId="ITPerspectives" contactMechId="PHONE491820" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
-  <PartyContactMechPurpose partyId="ITPerspectives" contactMechId="PHONE491820" contactMechPurposeTypeId="PHONE_MOBILE" fromDate="2021-01-01 00:00:00.0"/>
-  <ContactMech contactMechId="PHONE303406" contactMechTypeId="TELECOM_NUMBER" infoString="34 911890563"/>
-  <ContactMechType contactMechTypeId="TELECOM_NUMBER" description="Telephone Number"/>
-  <TelecomNumber contactMechId="PHONE303406" countryCode="34" contactNumber="34 911890563"/>
-  <PartyContactMech partyId="GpiSL" contactMechId="PHONE303406" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
-  <PartyContactMechPurpose partyId="GpiSL" contactMechId="PHONE303406" contactMechPurposeTypeId="PHONE_MOBILE" fromDate="2021-01-01 00:00:00.0"/>
-  <ContactMech contactMechId="PHONE440108" contactMechTypeId="TELECOM_NUMBER" infoString="0721218906"/>
-  <ContactMechType contactMechTypeId="TELECOM_NUMBER" description="Telephone Number"/>
-  <TelecomNumber contactMechId="PHONE440108" countryCode="40" contactNumber="0721218906"/>
-  <PartyContactMech partyId="OneSoftware" contactMechId="PHONE440108" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
-  <PartyContactMechPurpose partyId="OneSoftware" contactMechId="PHONE440108" contactMechPurposeTypeId="PHONE_MOBILE" fromDate="2021-01-01 00:00:00.0"/>
-  <ContactMech contactMechId="PHONE447781" contactMechTypeId="TELECOM_NUMBER" infoString="0720062202"/>
-  <ContactMechType contactMechTypeId="TELECOM_NUMBER" description="Telephone Number"/>
-  <TelecomNumber contactMechId="PHONE447781" countryCode="40" contactNumber="0720062202"/>
-  <PartyContactMech partyId="HappySteamCrew" contactMechId="PHONE447781" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
-  <PartyContactMechPurpose partyId="HappySteamCrew" contactMechId="PHONE447781" contactMechPurposeTypeId="PHONE_MOBILE" fromDate="2021-01-01 00:00:00.0"/>
-  <ContactMech contactMechId="PHONE548513" contactMechTypeId="TELECOM_NUMBER" infoString="0731071751"/>
-  <ContactMechType contactMechTypeId="TELECOM_NUMBER" description="Telephone Number"/>
-  <TelecomNumber contactMechId="PHONE548513" countryCode="40" contactNumber="0731071751"/>
-  <PartyContactMech partyId="VentivoItSolutions" contactMechId="PHONE548513" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
-  <PartyContactMechPurpose partyId="VentivoItSolutions" contactMechId="PHONE548513" contactMechPurposeTypeId="PHONE_MOBILE" fromDate="2021-01-01 00:00:00.0"/>
-  <ContactMech contactMechId="PHONE213863" contactMechTypeId="TELECOM_NUMBER" infoString="0773886454"/>
-  <ContactMechType contactMechTypeId="TELECOM_NUMBER" description="Telephone Number"/>
-  <TelecomNumber contactMechId="PHONE213863" countryCode="40" contactNumber="0773886454"/>
-  <PartyContactMech partyId="RossmayInt" contactMechId="PHONE213863" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y"/>
-  <PartyContactMechPurpose partyId="RossmayInt" contactMechId="PHONE213863" contactMechPurposeTypeId="PHONE_MOBILE" fromDate="2021-01-01 00:00:00.0"/>
+
+  <Invoice invoiceId="demo11001" invoiceTypeId="SALES_INVOICE" partyIdFrom="Netdava" partyId="RossmayInt" statusId="INVOICE_APPROVED" invoiceDate="2016-06-02 10:12:13.000" dueDate="2016-06-16" description="Testam testam" currencyUomId="EUR"/>
+    <InvoiceItem invoiceId="demo11001" invoiceItemSeqId="00001" invoiceItemTypeId="INV_SPROD_ITEM" uomId="USD" taxableFlag="Y" amount="543.23" description="this was e service for a product"/>
+  
+    <Payment paymentId="demo10001" paymentTypeId="CUSTOMER_PAYMENT"  partyIdFrom="RossmayInt" partyIdTo="Netdava" statusId="PMNT_RECEIVED" amount="820.97" currencyUomId="USD" actualCurrencyAmount="543.23" actualCurrencyUomId="EUR"/>
+    <PaymentApplication paymentApplicationId="demo11000" paymentId="demo10001" invoiceId="demo11001" amountApplied="543.23"/>
+
+
+  <GlJournal organizationPartyId="Netdava" glJournalId="ERROR_JOURNAL" glJournalName="Suspense transactions"/>
+
+  <PartyAcctgPreference partyId="Netdava" taxFormId="US_IRS_1120" cogsMethodId="COGS_LIFO" baseCurrencyUomId="USD"
+                          invoiceSeqCustMethId="INV_HOOK_ENF_SEQ" invoiceIdPrefix="ALA-BALA"
+                          quoteIdPrefix="CQ"
+                          orderIdPrefix="CO"
+                          errorGlJournalId="ERROR_JOURNAL"/>
+
+<GlAccountOrganization organizationPartyId="Netdava" glAccountId="100000" fromDate="2001-01-01 00:00:00.0"/>
+
 
 </entity-engine-xml>
