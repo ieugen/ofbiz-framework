@@ -44,8 +44,12 @@
   <!-- postal address -->
   <ContactMech contactMechId="postalAddress" contactMechTypeId="POSTAL_ADDRESS" />
   <PostalAddress contactMechId="postalAddress" toName="Netdava International S.R.L." address1="Aleea Arnăuți nr. 5" city="Ploiești" postalCode="100285" countryGeoId="ROU" />
-  <PartyContactMech partyId="Netdava" contactMechId="postalAddress" fromDate="2021-01-01 00:00:00.0" allowSolicitation="Y" />
-  <PartyContactMechPurpose partyId="Netdava" contactMechId="postalAddress" contactMechPurposeTypeId="PRIMARY_LOCATION" fromDate="2021-01-01 00:00:00.0" />
+  <PartyContactMech partyId="Netdava" contactMechId="postalAddress" fromDate="2000-01-01 00:00:00.0" allowSolicitation="Y" />
+  <PartyContactMechPurpose partyId="Netdava" contactMechId="postalAddress" contactMechPurposeTypeId="PRIMARY_LOCATION" fromDate="2000-01-01 00:00:00.0" />
+
+  <PartyContactMechPurpose partyId="Netdava" contactMechId="postalAddress" contactMechPurposeTypeId="BILLING_LOCATION" fromDate="2000-01-01 00:00:00.000"/>
+    <PartyContactMechPurpose partyId="Netdava" contactMechId="postalAddress" contactMechPurposeTypeId="GENERAL_LOCATION" fromDate="2000-01-01 00:00:00.000"/>
+    <PartyContactMechPurpose partyId="Netdava" contactMechId="postalAddress" contactMechPurposeTypeId="PAYMENT_LOCATION" fromDate="2000-01-01 00:00:00.000"/>
   
   <Party partyId="Andrew" statusId="PARTY_ENABLED" partyTypeId="PERSON" />
   <Person partyId="Andrew" salutation="Mr." firstName="Andrei" lastName="Stan" nickname="nas" gender="M" birthDate="October 31, 1986" />
@@ -382,7 +386,7 @@
   <PaymentApplication paymentApplicationId="2019-N-EU-8" paymentId="2019-N-EU-8" invoiceId="2019-N-EU-8" amountApplied="4640.0"/>
   <Invoice invoiceId="2019-N-EU-9" invoiceTypeId="SALES_INVOICE" partyIdFrom="Netdava" partyId="GpiPteLtd" statusId="INVOICE_PAID" invoiceDate="2019-10-06 10:58:09.000" dueDate="2019-10-20" currencyUomId="EUR"/>
   <InvoiceItem invoiceId="2019-N-EU-9" invoiceItemSeqId="1" uomId="EUR" quantity="1.0" amount="4640.0" description="Great People Inside Platform Sept. Sprint RJ1-5-8- Release preparations "/>
-  <Payment amount="4640.0" statusId="PMNT_RECEIVED" partyIdFrom="GpiPteLtd" actualCurrencyAmount="2.15296E7" currencyUomId="EUR" paymentId="2019-N-EU-9" actualCurrencyUomId="EUR" partyIdTo="Netdava" paymentTypeId="CUSTOMER_PAYMENT"/>
+  <Payment amount="4640.0" statusId="PMNT_RECEIVED" partyIdFrom="GpiPteLtd" actualCurrencyAmount="2.15296E7" currencyUomId="EUR" paymentId="2019-N-EU-9" actualCurrencyUomId="RON" partyIdTo="Netdava" paymentTypeId="CUSTOMER_PAYMENT"/>
   <PaymentApplication paymentApplicationId="2019-N-EU-9" paymentId="2019-N-EU-9" invoiceId="2019-N-EU-9" amountApplied="2.15296E7"/>
   <Invoice invoiceId="2019-N-EU-10" invoiceTypeId="SALES_INVOICE" partyIdFrom="Netdava" partyId="GpiPteLtd" statusId="INVOICE_PAID" invoiceDate="2019-11-11 19:21:53.000" dueDate="2019-11-25" currencyUomId="EUR"/>
   <InvoiceItem invoiceId="2019-N-EU-10" invoiceItemSeqId="1" uomId="EUR" quantity="1.0" amount="1200.0" description="Gr8pi IT consultancy services october 2019"/>
@@ -428,10 +432,10 @@
 
 
   <Invoice invoiceId="demo11001" invoiceTypeId="SALES_INVOICE" partyIdFrom="Netdava" partyId="RossmayInt" statusId="INVOICE_APPROVED" invoiceDate="2016-06-02 10:12:13.000" dueDate="2016-06-16" description="Testam testam" currencyUomId="EUR"/>
-    <InvoiceItem invoiceId="demo11001" invoiceItemSeqId="00001" invoiceItemTypeId="INV_SPROD_ITEM" uomId="USD" taxableFlag="Y" amount="543.23" description="this was e service for a product"/>
+  <InvoiceItem invoiceId="demo11001" invoiceItemSeqId="00001" invoiceItemTypeId="INV_SPROD_ITEM" uomId="USD" taxableFlag="Y" amount="543.23" description="this was e service for a product"/>
   
-    <Payment paymentId="demo10001" paymentTypeId="CUSTOMER_PAYMENT"  partyIdFrom="RossmayInt" partyIdTo="Netdava" statusId="PMNT_RECEIVED" amount="820.97" currencyUomId="USD" actualCurrencyAmount="543.23" actualCurrencyUomId="EUR"/>
-    <PaymentApplication paymentApplicationId="demo11000" paymentId="demo10001" invoiceId="demo11001" amountApplied="543.23"/>
+  <Payment paymentId="demo10001" paymentTypeId="CUSTOMER_PAYMENT"  partyIdFrom="RossmayInt" partyIdTo="Netdava" statusId="PMNT_RECEIVED" amount="820.97" currencyUomId="USD" actualCurrencyAmount="543.23" actualCurrencyUomId="EUR"/>
+  <PaymentApplication paymentApplicationId="demo11000" paymentId="demo10001" invoiceId="demo11001" amountApplied="543.23"/>
 
 
   <GlJournal organizationPartyId="Netdava" glJournalId="ERROR_JOURNAL" glJournalName="Suspense transactions"/>
