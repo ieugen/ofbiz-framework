@@ -148,7 +148,7 @@ access. For a detailed description see the core/docs/entityconfig.html file.
         <read-data reader-name="ext-demo"/>
         <inline-jdbc
                 jdbc-driver="org.postgresql.Driver"
-                jdbc-uri="jdbc:postgresql://127.0.0.1/ofbiz"
+                jdbc-uri="jdbc:postgresql://db/ofbiz"
                 jdbc-username="ofbiz"
                 jdbc-password="ofbiz"
                 isolation-level="ReadCommitted"
@@ -185,7 +185,7 @@ access. For a detailed description see the core/docs/entityconfig.html file.
         <read-data reader-name="ext-demo"/>
         <inline-jdbc
                 jdbc-driver="org.postgresql.Driver"
-                jdbc-uri="jdbc:postgresql://127.0.0.1/ofbizolap"
+                jdbc-uri="jdbc:postgresql://db/ofbizolap"
                 jdbc-username="ofbiz"
                 jdbc-password="ofbiz"
                 isolation-level="ReadCommitted"
@@ -222,7 +222,7 @@ access. For a detailed description see the core/docs/entityconfig.html file.
         <read-data reader-name="ext-demo"/>
         <inline-jdbc
                 jdbc-driver="org.postgresql.Driver"
-                jdbc-uri="jdbc:postgresql://127.0.0.1/ofbiztenant"
+                jdbc-uri="jdbc:postgresql://db/ofbiztenant"
                 jdbc-username="ofbiz"
                 jdbc-password="ofbiz"
                 isolation-level="ReadCommitted"
