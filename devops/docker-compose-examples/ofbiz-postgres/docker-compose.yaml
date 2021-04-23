@@ -6,7 +6,7 @@ services:
     volumes:
       - db-data:/var/lib/postgresql/data
       - type: bind
-        source: ./local-config/initdb
+        source: ./config/initdb
         target: /docker-entrypoint-initdb.d
         read_only: true
     environment:
@@ -20,21 +20,29 @@ services:
       retries: 5
 
   ofbiz:
-#    build:
-#      context: .
-    image: ieugen/ofbiz:11-jdk
-#    command: /opt/ofbiz/bin/ofbiz --load-data
+    build: ofbiz
     volumes:
-      - ./local-config/entityengine.postgres.xml:/opt/ofbiz/config/entityengine.xml:ro
+      - ./config/entityengine.postgres.xml:/opt/ofbiz/config/entityengine.xml:ro
     environment:
        - JAVA_OPTS="-Xmx2048m"
     depends_on:
-      db:
-        condition: service_healthy
+      - db
     ports:
       - "8009:8009"
       - "8080:8080"
       - "8443:8443"
+
+  load-all-data:
+    profiles:
+      - seed
+    build: ofbiz
+    volumes:
+      - ./config/entityengine.postgres.xml:/opt/ofbiz/config/entityengine.xml:ro
+    environment:
+      - JAVA_OPTS="-Xmx2048m"
+    depends_on:
+      - db
+    command: ["/opt/ofbiz/bin/ofbiz", "--load-data"]
 
 volumes:
   db-data:
