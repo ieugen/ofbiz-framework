@@ -208,7 +208,7 @@ dependencies {
     implementation 'org.apache.pdfbox:pdfbox:2.0.23'
     implementation 'org.apache.shiro:shiro-core:1.4.1' // So far we did not update from 1.4.1 because of a compile issue or w/ 1.7.0 an EntityCrypto exception when loading data. You may try w/ a newer version than  1.7.0
     implementation 'org.apache.sshd:sshd-core:1.7.0' // So far we did not update from 1.7.0 because of a compile issue. You may try w/ a newer version than  2.4.0
-    implementation 'org.apache.tika:tika-core:1.25'
+    implementation 'org.apache.tika:tika-core:1.26'
     implementation 'org.apache.tika:tika-parsers:1.25'
     implementation 'org.apache.tomcat:tomcat-catalina-ha:9.0.43' // Remember to change the version number (9 now) in javadoc block if needed.
     implementation 'org.apache.tomcat:tomcat-jasper:9.0.43'
@@ -333,7 +333,7 @@ checkstyle {
     // the sum of errors found last time it was changed after using the
     // ‘checkstyle’ tool present in the framework and in the official
     // plugins.
-    tasks.checkstyleMain.maxErrors = 127
+    tasks.checkstyleMain.maxErrors = 116
     // Currently there are a lot of errors so we need to temporarily
     // hide them to avoid polluting the terminal output.
     showViolations = false
