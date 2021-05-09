@@ -15,7 +15,7 @@ jobs:
         docker-file:
           - path: jdk/8
             tags: trunk-8,trunk-adoptopenjdk-8-jdk-hotspot
-            platforms: linux/amd64,linux/arm64
+            platforms: linux/amd64
 
           - path: jdk/11
             tags: trunk-11,trunk-adoptopenjdk-11-jdk-hotspot
